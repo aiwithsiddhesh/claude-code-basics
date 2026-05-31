@@ -6,7 +6,7 @@ const M = [
     "title": "Foundations of Claude Code",
     "color": "#F59E0B",
     "bg": "#78350F",
-    "minutes": 55,
+    "minutes": 145,
     "sections": [
       {
         "id": "m1s1",
@@ -15,7 +15,7 @@ const M = [
         "content": [
           {
             "t": "p",
-            "v": "This course turns Claude Code from a novelty into a repeatable engineering workflow. By the end, learners should be able to onboard a real repository, explore safely, plan changes, implement with tests, review the diff, automate common tasks, and publish the finished learning app to GitHub Pages."
+            "v": "This course turns Claude Code from a novelty into a repeatable engineering workflow. By the end, learners should be able to onboard a real repository, explore safely, plan changes, implement with tests, review the diff, automate common tasks, and build a complete full-stack project with Claude Code."
           },
           {
             "t": "h",
@@ -28,7 +28,7 @@ const M = [
               "Instructor talking points, live demos, labs, and checkpoints",
               "Prompt packs students can copy into Claude Code",
               "Troubleshooting branches for when Claude misunderstands the codebase",
-              "A capstone project where students create their own Claude Code workflow kit"
+              "A complete full-stack project where students build DevFlow with Claude Code"
             ]
           },
           {
@@ -47,7 +47,7 @@ const M = [
               [
                 "Daily engineering workflow",
                 "200 min",
-                "Students can use Explore \u2192 Plan \u2192 Code \u2192 Verify \u2192 Commit on real tasks"
+                "Students can use Explore → Plan → Code → Verify → Commit on real tasks"
               ],
               [
                 "Automation + MCP + advanced features",
@@ -55,15 +55,98 @@ const M = [
                 "Students can extend Claude Code with hooks, skills, subagents, MCP, SDK, and GitHub workflows"
               ],
               [
-                "Capstone + publishing",
-                "30 min",
-                "Students package what they built and deploy the course site to GitHub Pages"
+                "Full-stack project build",
+                "360+ min",
+                "Students build DevFlow from scratch using Claude Code across planning, backend, frontend, testing, automation, and documentation"
               ]
             ]
           },
           {
             "t": "note",
-            "v": "Delivery tip: do not lecture for eight straight hours. Alternate 10\u201315 minutes of explanation with a demo or hands-on task. Claude Code is learned by watching the loop and then practicing it."
+            "v": "Delivery tip: do not lecture for eight straight hours. Alternate 10–15 minutes of explanation with a demo or hands-on task. Claude Code is learned by watching the loop and then practicing it."
+          }
+        ]
+      },
+      {
+        "id": "m1s1_practice",
+        "title": "Hands-on Lab: Course Orientation: From Basic Tool Use to 8-Hour Workflow",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports core Claude Code workflow on a realistic backend project."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m1s1, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Course Orientation: From Basic Tool Use to 8-Hour Workflow. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Course Orientation: From Basic Tool Use to 8-Hour Workflow. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Course Orientation: From Basic Tool Use to 8-Hour Workflow. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Course Orientation: From Basic Tool Use to 8-Hour Workflow: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -127,6 +210,89 @@ const M = [
           {
             "t": "note",
             "v": "A good Claude Code user is not passive. You steer the loop, keep the scope small, and force verification before trusting the result."
+          }
+        ]
+      },
+      {
+        "id": "m1s2_practice",
+        "title": "Hands-on Lab: The Agent Mental Model",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports core Claude Code workflow on a realistic backend project."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m1s2, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: The Agent Mental Model. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to The Agent Mental Model. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice The Agent Mental Model. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for The Agent Mental Model: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -199,6 +365,89 @@ const M = [
         ]
       },
       {
+        "id": "m1s3_practice",
+        "title": "Hands-on Lab: Claude Code Interface, Tools, and Visibility",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports core Claude Code workflow on a realistic backend project."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m1s3, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Claude Code Interface, Tools, and Visibility. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Claude Code Interface, Tools, and Visibility. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Claude Code Interface, Tools, and Visibility. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Claude Code Interface, Tools, and Visibility: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m1s4",
         "title": "Permissions and Safety Mindset",
         "minutes": 10,
@@ -254,6 +503,89 @@ const M = [
         ]
       },
       {
+        "id": "m1s4_practice",
+        "title": "Hands-on Lab: Permissions and Safety Mindset",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports core Claude Code workflow on a realistic backend project."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m1s4, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Permissions and Safety Mindset. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Permissions and Safety Mindset. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Permissions and Safety Mindset. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Permissions and Safety Mindset: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m1s5",
         "title": "Lab: Inspect a Project Without Editing",
         "minutes": 11,
@@ -299,6 +631,89 @@ const M = [
             "v": "Assessment: students pass this lab when they can produce a repository map and a safe next prompt without any code changes."
           }
         ]
+      },
+      {
+        "id": "m1s5_practice",
+        "title": "Hands-on Lab: Lab: Inspect a Project Without Editing",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/claude-code-action because it supports GitHub issue/PR automation and workflow safety."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/claude-code-action",
+                "Clone or open the repo, create a branch named lab/m1s5, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Lab: Inspect a Project Without Editing. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/claude-code-action",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Lab: Inspect a Project Without Editing. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/claude-code-action",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Lab: Inspect a Project Without Editing. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/claude-code-action",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/claude-code-action",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/claude-code-action",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Lab: Inspect a Project Without Editing: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
       }
     ]
   },
@@ -307,7 +722,7 @@ const M = [
     "title": "Installation, Setup, and Project Onboarding",
     "color": "#0284C7",
     "bg": "#0C4A6E",
-    "minutes": 50,
+    "minutes": 140,
     "sections": [
       {
         "id": "m2s1",
@@ -373,6 +788,89 @@ const M = [
         ]
       },
       {
+        "id": "m2s1_practice",
+        "title": "Hands-on Lab: Prerequisites and Installation",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/claude-code-action because it supports GitHub issue/PR automation and workflow safety."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/claude-code-action",
+                "Clone or open the repo, create a branch named lab/m2s1, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Prerequisites and Installation. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/claude-code-action",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Prerequisites and Installation. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/claude-code-action",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Prerequisites and Installation. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/claude-code-action",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/claude-code-action",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/claude-code-action",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Prerequisites and Installation: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m2s2",
         "title": "Preparing a Repository for AI Work",
         "minutes": 10,
@@ -413,6 +911,89 @@ const M = [
               "A known test state prevents blaming Claude for pre-existing failures",
               "Running from the root helps Claude find README, package files, and config"
             ]
+          }
+        ]
+      },
+      {
+        "id": "m2s2_practice",
+        "title": "Hands-on Lab: Preparing a Repository for AI Work",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/claude-code-action because it supports GitHub issue/PR automation and workflow safety."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/claude-code-action",
+                "Clone or open the repo, create a branch named lab/m2s2, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Preparing a Repository for AI Work. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/claude-code-action",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Preparing a Repository for AI Work. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/claude-code-action",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Preparing a Repository for AI Work. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/claude-code-action",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/claude-code-action",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/claude-code-action",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Preparing a Repository for AI Work: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -458,6 +1039,89 @@ const M = [
               "Ask Claude to critique the file for missing instructions",
               "Commit the improved CLAUDE.md"
             ]
+          }
+        ]
+      },
+      {
+        "id": "m2s3_practice",
+        "title": "Hands-on Lab: First Run, /init, and CLAUDE.md",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/claude-code-action because it supports GitHub issue/PR automation and workflow safety."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/claude-code-action",
+                "Clone or open the repo, create a branch named lab/m2s3, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: First Run, /init, and CLAUDE.md. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/claude-code-action",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to First Run, /init, and CLAUDE.md. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/claude-code-action",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice First Run, /init, and CLAUDE.md. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/claude-code-action",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/claude-code-action",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/claude-code-action",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for First Run, /init, and CLAUDE.md: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -516,6 +1180,89 @@ const M = [
         ]
       },
       {
+        "id": "m2s4_practice",
+        "title": "Hands-on Lab: Settings, Permissions, and Team Defaults",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/claude-code-action because it supports GitHub issue/PR automation and workflow safety."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/claude-code-action",
+                "Clone or open the repo, create a branch named lab/m2s4, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Settings, Permissions, and Team Defaults. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/claude-code-action",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Settings, Permissions, and Team Defaults. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/claude-code-action",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Settings, Permissions, and Team Defaults. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/claude-code-action",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/claude-code-action",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/claude-code-action",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Settings, Permissions, and Team Defaults: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m2s5",
         "title": "Lab: Create a Project Onboarding Prompt",
         "minutes": 10,
@@ -546,6 +1293,89 @@ const M = [
             ]
           }
         ]
+      },
+      {
+        "id": "m2s5_practice",
+        "title": "Hands-on Lab: Lab: Create a Project Onboarding Prompt",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/claude-code-action because it supports GitHub issue/PR automation and workflow safety."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/claude-code-action",
+                "Clone or open the repo, create a branch named lab/m2s5, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Lab: Create a Project Onboarding Prompt. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/claude-code-action",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Lab: Create a Project Onboarding Prompt. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/claude-code-action",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Lab: Create a Project Onboarding Prompt. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/claude-code-action",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/claude-code-action",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/claude-code-action",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Lab: Create a Project Onboarding Prompt: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
       }
     ]
   },
@@ -554,7 +1384,7 @@ const M = [
     "title": "Daily Development Workflow",
     "color": "#059669",
     "bg": "#064E3B",
-    "minutes": 75,
+    "minutes": 165,
     "sections": [
       {
         "id": "m3s1",
@@ -613,6 +1443,89 @@ const M = [
         ]
       },
       {
+        "id": "m3s1_practice",
+        "title": "Hands-on Lab: Explore Phase: Evidence Before Edits",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports core Claude Code workflow on a realistic backend project."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m3s1, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Explore Phase: Evidence Before Edits. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Explore Phase: Evidence Before Edits. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Explore Phase: Evidence Before Edits. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Explore Phase: Evidence Before Edits: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m3s2",
         "title": "Plan Phase: Convert Understanding into a Safe Change List",
         "minutes": 15,
@@ -645,6 +1558,89 @@ const M = [
           {
             "t": "note",
             "v": "If the plan touches too many files, ask Claude to split it into phases. The first phase should usually prove the approach with one vertical slice."
+          }
+        ]
+      },
+      {
+        "id": "m3s2_practice",
+        "title": "Hands-on Lab: Plan Phase: Convert Understanding into a Safe Change List",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports core Claude Code workflow on a realistic backend project."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m3s2, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Plan Phase: Convert Understanding into a Safe Change List. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Plan Phase: Convert Understanding into a Safe Change List. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Plan Phase: Convert Understanding into a Safe Change List. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Plan Phase: Convert Understanding into a Safe Change List: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -708,6 +1704,89 @@ const M = [
         ]
       },
       {
+        "id": "m3s3_practice",
+        "title": "Hands-on Lab: Code Phase: Small Iterations, Not Big Bang Edits",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports core Claude Code workflow on a realistic backend project."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m3s3, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Code Phase: Small Iterations, Not Big Bang Edits. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Code Phase: Small Iterations, Not Big Bang Edits. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Code Phase: Small Iterations, Not Big Bang Edits. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Code Phase: Small Iterations, Not Big Bang Edits: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m3s4",
         "title": "Verify Phase: Tests, Lint, Build, and Manual Checks",
         "minutes": 15,
@@ -744,6 +1823,89 @@ const M = [
             "t": "code",
             "lang": "markdown",
             "v": "## Verification Report\n- Changed files:\n- Tests run:\n- Passing checks:\n- Failing or skipped checks:\n- Manual checks performed:\n- Remaining risks:"
+          }
+        ]
+      },
+      {
+        "id": "m3s4_practice",
+        "title": "Hands-on Lab: Verify Phase: Tests, Lint, Build, and Manual Checks",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports professional React architecture and UI workflow practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m3s4, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Verify Phase: Tests, Lint, Build, and Manual Checks. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Verify Phase: Tests, Lint, Build, and Manual Checks. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Verify Phase: Tests, Lint, Build, and Manual Checks. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Verify Phase: Tests, Lint, Build, and Manual Checks: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -809,6 +1971,89 @@ const M = [
             ]
           }
         ]
+      },
+      {
+        "id": "m3s5_practice",
+        "title": "Hands-on Lab: Commit and PR Handoff",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/claude-code-action because it supports GitHub issue/PR automation and workflow safety."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/claude-code-action",
+                "Clone or open the repo, create a branch named lab/m3s5, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Commit and PR Handoff. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/claude-code-action",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Commit and PR Handoff. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/claude-code-action",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Commit and PR Handoff. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/claude-code-action",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/claude-code-action",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/claude-code-action",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Commit and PR Handoff: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
       }
     ]
   },
@@ -817,7 +2062,7 @@ const M = [
     "title": "Context, Memory, Commands, and Course Assets",
     "color": "#7C3AED",
     "bg": "#3B0764",
-    "minutes": 60,
+    "minutes": 150,
     "sections": [
       {
         "id": "m4s1",
@@ -859,6 +2104,89 @@ const M = [
           {
             "t": "note",
             "v": "The better your context hygiene, the more reliable Claude becomes late in the session. Many 'model got worse' moments are actually context-management failures."
+          }
+        ]
+      },
+      {
+        "id": "m4s1_practice",
+        "title": "Hands-on Lab: Context Window: What Claude Can and Cannot Remember",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports session-control commands while inspecting a real API codebase."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m4s1, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Context Window: What Claude Can and Cannot Remember. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Context Window: What Claude Can and Cannot Remember. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Context Window: What Claude Can and Cannot Remember. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Context Window: What Claude Can and Cannot Remember: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -918,6 +2246,89 @@ const M = [
         ]
       },
       {
+        "id": "m4s2_practice",
+        "title": "Hands-on Lab: /compact, /clear, and /context Workflows",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports session-control commands while inspecting a real API codebase."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m4s2, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: /compact, /clear, and /context Workflows. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to /compact, /clear, and /context Workflows. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice /compact, /clear, and /context Workflows. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for /compact, /clear, and /context Workflows: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m4s3",
         "title": "Writing a High-ROI CLAUDE.md",
         "minutes": 15,
@@ -947,6 +2358,89 @@ const M = [
           {
             "t": "note",
             "v": "Keep CLAUDE.md short enough to stay useful. Put long examples in linked docs or skills so the always-loaded memory does not become noisy."
+          }
+        ]
+      },
+      {
+        "id": "m4s3_practice",
+        "title": "Hands-on Lab: Writing a High-ROI CLAUDE.md",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports project memory and scalable repository onboarding."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m4s3, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Writing a High-ROI CLAUDE.md. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Writing a High-ROI CLAUDE.md. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Writing a High-ROI CLAUDE.md. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Writing a High-ROI CLAUDE.md: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -996,7 +2490,90 @@ const M = [
           {
             "t": "code",
             "lang": "markdown",
-            "v": "# .claude/commands/review-diff.md\nReview the current git diff. Focus on correctness, security, performance, test coverage, and maintainability. Return findings as:\n- [HIGH/MED/LOW] file:line \u2014 issue \u2014 recommended fix\nAlso list positives and missing tests."
+            "v": "# .claude/commands/review-diff.md\nReview the current git diff. Focus on correctness, security, performance, test coverage, and maintainability. Return findings as:\n- [HIGH/MED/LOW] file:line — issue — recommended fix\nAlso list positives and missing tests."
+          }
+        ]
+      },
+      {
+        "id": "m4s4_practice",
+        "title": "Hands-on Lab: Custom Slash Commands",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports session-control commands while inspecting a real API codebase."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m4s4, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Custom Slash Commands. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Custom Slash Commands. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Custom Slash Commands. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Custom Slash Commands: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -1033,6 +2610,89 @@ const M = [
             "v": "Assessment: the kit should be specific enough that another developer could start Claude Code in the repo and follow the same workflow."
           }
         ]
+      },
+      {
+        "id": "m4s5_practice",
+        "title": "Hands-on Lab: Lab: Build Your Team's AI Workflow Kit",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports professional React architecture and UI workflow practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m4s5, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Lab: Build Your Team's AI Workflow Kit. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Lab: Build Your Team's AI Workflow Kit. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Lab: Build Your Team's AI Workflow Kit. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Lab: Build Your Team's AI Workflow Kit: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
       }
     ]
   },
@@ -1041,7 +2701,7 @@ const M = [
     "title": "Built-In Claude Code Commands Mastery",
     "color": "#A3E635",
     "bg": "#365314",
-    "minutes": 110,
+    "minutes": 292,
     "sections": [
       {
         "id": "m4cmds1",
@@ -1107,6 +2767,89 @@ const M = [
         ]
       },
       {
+        "id": "m4cmds1_practice",
+        "title": "Hands-on Lab: Why Built-In Commands Matter",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports professional React architecture and UI workflow practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m4cmds1, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Why Built-In Commands Matter. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Why Built-In Commands Matter. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Why Built-In Commands Matter. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Why Built-In Commands Matter: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m4cmds2",
         "title": "The First 20 Commands Every Learner Should Practice",
         "minutes": 14,
@@ -1146,7 +2889,7 @@ const M = [
               [
                 "/bg",
                 "You want the short alias for /background.",
-                "Same intent as /background; teach aliases so students can read other developers\u2019 workflows."
+                "Same intent as /background; teach aliases so students can read other developers’ workflows."
               ],
               [
                 "/batch <instruction>",
@@ -1248,6 +2991,89 @@ const M = [
         ]
       },
       {
+        "id": "m4cmds2_practice",
+        "title": "Hands-on Lab: The First 20 Commands Every Learner Should Practice",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/claude-code-action because it supports GitHub issue/PR automation and workflow safety."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/claude-code-action",
+                "Clone or open the repo, create a branch named lab/m4cmds2, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: The First 20 Commands Every Learner Should Practice. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/claude-code-action",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to The First 20 Commands Every Learner Should Practice. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/claude-code-action",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice The First 20 Commands Every Learner Should Practice. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/claude-code-action",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/claude-code-action",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/claude-code-action",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for The First 20 Commands Every Learner Should Practice: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m4cmds3",
         "title": "Command Families: When, How, and Why",
         "minutes": 16,
@@ -1318,6 +3144,89 @@ const M = [
             "t": "code",
             "lang": "text",
             "v": "Bad: Can you maybe review the changes and tell me if anything looks risky?\nBetter: /diff\nThen: /code-review high --fix\nThen: /security-review\nThen: Summarize what you changed and what still needs manual review."
+          }
+        ]
+      },
+      {
+        "id": "m4cmds3_practice",
+        "title": "Hands-on Lab: Command Families: When, How, and Why",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports professional React architecture and UI workflow practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m4cmds3, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Command Families: When, How, and Why. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Command Families: When, How, and Why. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Command Families: When, How, and Why. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Command Families: When, How, and Why: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -1397,6 +3306,89 @@ const M = [
           {
             "t": "note",
             "v": "Teach students to compact before the session degrades. Waiting until Claude is confused is like saving a file after the editor crashes."
+          }
+        ]
+      },
+      {
+        "id": "m4cmds4_practice",
+        "title": "Hands-on Lab: Context and Memory Commands Deep Dive",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports professional React architecture and UI workflow practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m4cmds4, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Context and Memory Commands Deep Dive. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Context and Memory Commands Deep Dive. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Context and Memory Commands Deep Dive. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Context and Memory Commands Deep Dive: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -1485,6 +3477,89 @@ const M = [
         ]
       },
       {
+        "id": "m4cmds5_practice",
+        "title": "Hands-on Lab: Safety, Permissions, and Execution Commands",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports professional React architecture and UI workflow practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m4cmds5, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Safety, Permissions, and Execution Commands. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Safety, Permissions, and Execution Commands. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Safety, Permissions, and Execution Commands. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Safety, Permissions, and Execution Commands: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m4cmds6",
         "title": "Review, Debugging, and Verification Commands",
         "minutes": 14,
@@ -1569,6 +3644,89 @@ const M = [
         ]
       },
       {
+        "id": "m4cmds6_practice",
+        "title": "Hands-on Lab: Review, Debugging, and Verification Commands",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports professional React architecture and UI workflow practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m4cmds6, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Review, Debugging, and Verification Commands. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Review, Debugging, and Verification Commands. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Review, Debugging, and Verification Commands. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Review, Debugging, and Verification Commands: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m4cmds7",
         "title": "Automation, Background Work, and GitHub Commands",
         "minutes": 14,
@@ -1638,6 +3796,89 @@ const M = [
         ]
       },
       {
+        "id": "m4cmds7_practice",
+        "title": "Hands-on Lab: Automation, Background Work, and GitHub Commands",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/claude-code-action because it supports GitHub issue/PR automation and workflow safety."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/claude-code-action",
+                "Clone or open the repo, create a branch named lab/m4cmds7, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Automation, Background Work, and GitHub Commands. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/claude-code-action",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Automation, Background Work, and GitHub Commands. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/claude-code-action",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Automation, Background Work, and GitHub Commands. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/claude-code-action",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/claude-code-action",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/claude-code-action",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Automation, Background Work, and GitHub Commands: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m4cmds8",
         "title": "90+ Command Cheat Sheet: What Everyone Should Recognize",
         "minutes": 22,
@@ -1677,7 +3918,7 @@ const M = [
               [
                 "/bg",
                 "You want the short alias for /background.",
-                "Same intent as /background; teach aliases so students can read other developers\u2019 workflows."
+                "Same intent as /background; teach aliases so students can read other developers’ workflows."
               ],
               [
                 "/batch <instruction>",
@@ -2248,6 +4489,89 @@ const M = [
         ]
       },
       {
+        "id": "m4cmds8_practice",
+        "title": "Hands-on Lab: 90+ Command Cheat Sheet: What Everyone Should Recognize",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports professional React architecture and UI workflow practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m4cmds8, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: 90+ Command Cheat Sheet: What Everyone Should Recognize. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to 90+ Command Cheat Sheet: What Everyone Should Recognize. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice 90+ Command Cheat Sheet: What Everyone Should Recognize. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for 90+ Command Cheat Sheet: What Everyone Should Recognize: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m4cmds9",
         "title": "Labs: Build a Team Command Playbook",
         "minutes": 10,
@@ -2285,6 +4609,89 @@ const M = [
             "v": "This is the difference between a basic course and a professional workflow course: students leave with operating procedures, not just feature awareness."
           }
         ]
+      },
+      {
+        "id": "m4cmds9_practice",
+        "title": "Hands-on Lab: Labs: Build a Team Command Playbook",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports professional React architecture and UI workflow practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m4cmds9, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Labs: Build a Team Command Playbook. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Labs: Build a Team Command Playbook. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Labs: Build a Team Command Playbook. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Labs: Build a Team Command Playbook: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
       }
     ]
   },
@@ -2293,7 +4700,7 @@ const M = [
     "title": "Debugging, Testing, Review, and Refactoring",
     "color": "#BE185D",
     "bg": "#500724",
-    "minutes": 65,
+    "minutes": 155,
     "sections": [
       {
         "id": "m5s1",
@@ -2356,6 +4763,89 @@ const M = [
         ]
       },
       {
+        "id": "m5s1_practice",
+        "title": "Hands-on Lab: Debugging with Claude Code",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports real debugging, validation, review, testing, and refactor practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m5s1, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Debugging with Claude Code. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Debugging with Claude Code. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Debugging with Claude Code. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Debugging with Claude Code: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m5s2",
         "title": "Test Generation Without Fake Confidence",
         "minutes": 12,
@@ -2386,6 +4876,89 @@ const M = [
           {
             "t": "note",
             "v": "If Claude writes tests that only verify mocked implementation calls, push it toward user-visible behavior and contract-level expectations."
+          }
+        ]
+      },
+      {
+        "id": "m5s2_practice",
+        "title": "Hands-on Lab: Test Generation Without Fake Confidence",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports real debugging, validation, review, testing, and refactor practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m5s2, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Test Generation Without Fake Confidence. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Test Generation Without Fake Confidence. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Test Generation Without Fake Confidence. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Test Generation Without Fake Confidence: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -2434,7 +5007,7 @@ const M = [
           {
             "t": "code",
             "lang": "text",
-            "v": "Review the current git diff. Output only actionable findings in this format:\n- [HIGH/MED/LOW] file:line \u2014 issue \u2014 why it matters \u2014 recommended fix\nThen list missing tests and any parts of the diff you consider safe."
+            "v": "Review the current git diff. Output only actionable findings in this format:\n- [HIGH/MED/LOW] file:line — issue — why it matters — recommended fix\nThen list missing tests and any parts of the diff you consider safe."
           },
           {
             "t": "h",
@@ -2448,6 +5021,89 @@ const M = [
               "Decide whether it is valid, false positive, or needs more evidence",
               "Rewrite the prompt to reduce false positives"
             ]
+          }
+        ]
+      },
+      {
+        "id": "m5s3_practice",
+        "title": "Hands-on Lab: Code Review: Security, Performance, and Maintainability",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports real debugging, validation, review, testing, and refactor practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m5s3, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Code Review: Security, Performance, and Maintainability. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Code Review: Security, Performance, and Maintainability. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Code Review: Security, Performance, and Maintainability. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Code Review: Security, Performance, and Maintainability: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -2483,6 +5139,89 @@ const M = [
           {
             "t": "note",
             "v": "Never combine a big refactor with a feature unless there is a compelling reason. Claude can do both, but reviewers will hate the diff."
+          }
+        ]
+      },
+      {
+        "id": "m5s4_practice",
+        "title": "Hands-on Lab: Refactoring Safely",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is gothinkster/node-express-realworld-example-app because it supports real debugging, validation, review, testing, and refactor practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "gothinkster/node-express-realworld-example-app",
+                "Clone or open the repo, create a branch named lab/m5s4, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Refactoring Safely. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Refactoring Safely. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "gothinkster/node-express-realworld-example-app",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Refactoring Safely. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "gothinkster/node-express-realworld-example-app",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "gothinkster/node-express-realworld-example-app",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "gothinkster/node-express-realworld-example-app",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Refactoring Safely: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -2530,6 +5269,89 @@ const M = [
             ]
           }
         ]
+      },
+      {
+        "id": "m5s5_practice",
+        "title": "Hands-on Lab: UI Workflows with Screenshots and Visual Feedback",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is alan2207/bulletproof-react because it supports professional React architecture and UI workflow practice."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "alan2207/bulletproof-react",
+                "Clone or open the repo, create a branch named lab/m5s5, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: UI Workflows with Screenshots and Visual Feedback. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "alan2207/bulletproof-react",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to UI Workflows with Screenshots and Visual Feedback. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "alan2207/bulletproof-react",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice UI Workflows with Screenshots and Visual Feedback. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "alan2207/bulletproof-react",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "alan2207/bulletproof-react",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "alan2207/bulletproof-react",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for UI Workflows with Screenshots and Visual Feedback: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
       }
     ]
   },
@@ -2538,7 +5360,7 @@ const M = [
     "title": "MCP Fundamentals and Building Servers",
     "color": "#DC2626",
     "bg": "#450A0A",
-    "minutes": 70,
+    "minutes": 160,
     "sections": [
       {
         "id": "m6s1",
@@ -2556,7 +5378,7 @@ const M = [
           {
             "t": "code",
             "lang": "text",
-            "v": "User asks a task\n  \u2193\nMCP-capable client such as Claude Code\n  \u2193 JSON-RPC over stdio or Streamable HTTP\nMCP server exposing tools/resources/prompts\n  \u2193\nExternal system: file system, database, GitHub, browser, internal API"
+            "v": "User asks a task\n  ↓\nMCP-capable client such as Claude Code\n  ↓ JSON-RPC over stdio or Streamable HTTP\nMCP server exposing tools/resources/prompts\n  ↓\nExternal system: file system, database, GitHub, browser, internal API"
           },
           {
             "t": "h",
@@ -2575,6 +5397,89 @@ const M = [
           {
             "t": "note",
             "v": "Do not build an MCP server for every script. Start with a normal script or custom command; move to MCP when discoverability, permissions, reuse, or external integration matter."
+          }
+        ]
+      },
+      {
+        "id": "m6s1_practice",
+        "title": "Hands-on Lab: Why MCP Exists",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is modelcontextprotocol/example-remote-server because it supports MCP tools/resources/prompts and remote-server architecture."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "modelcontextprotocol/example-remote-server",
+                "Clone or open the repo, create a branch named lab/m6s1, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Why MCP Exists. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "modelcontextprotocol/example-remote-server",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Why MCP Exists. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "modelcontextprotocol/example-remote-server",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Why MCP Exists. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "modelcontextprotocol/example-remote-server",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "modelcontextprotocol/example-remote-server",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "modelcontextprotocol/example-remote-server",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Why MCP Exists: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -2637,6 +5542,89 @@ const M = [
         ]
       },
       {
+        "id": "m6s2_practice",
+        "title": "Hands-on Lab: Tools, Resources, and Prompts",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is modelcontextprotocol/example-remote-server because it supports MCP tools/resources/prompts and remote-server architecture."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "modelcontextprotocol/example-remote-server",
+                "Clone or open the repo, create a branch named lab/m6s2, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Tools, Resources, and Prompts. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "modelcontextprotocol/example-remote-server",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Tools, Resources, and Prompts. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "modelcontextprotocol/example-remote-server",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Tools, Resources, and Prompts. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "modelcontextprotocol/example-remote-server",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "modelcontextprotocol/example-remote-server",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "modelcontextprotocol/example-remote-server",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Tools, Resources, and Prompts: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m6s3",
         "title": "Build a Minimal Python MCP Server",
         "minutes": 18,
@@ -2671,6 +5659,89 @@ const M = [
           {
             "t": "note",
             "v": "The path check is intentionally included in the teaching example. MCP does not remove the need for normal application security."
+          }
+        ]
+      },
+      {
+        "id": "m6s3_practice",
+        "title": "Hands-on Lab: Build a Minimal Python MCP Server",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is modelcontextprotocol/example-remote-server because it supports MCP tools/resources/prompts and remote-server architecture."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "modelcontextprotocol/example-remote-server",
+                "Clone or open the repo, create a branch named lab/m6s3, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Build a Minimal Python MCP Server. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "modelcontextprotocol/example-remote-server",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Build a Minimal Python MCP Server. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "modelcontextprotocol/example-remote-server",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Build a Minimal Python MCP Server. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "modelcontextprotocol/example-remote-server",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "modelcontextprotocol/example-remote-server",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "modelcontextprotocol/example-remote-server",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Build a Minimal Python MCP Server: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -2730,6 +5801,89 @@ const M = [
         ]
       },
       {
+        "id": "m6s4_practice",
+        "title": "Hands-on Lab: Inspector and Debugging MCP Servers",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is modelcontextprotocol/example-remote-server because it supports MCP tools/resources/prompts and remote-server architecture."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "modelcontextprotocol/example-remote-server",
+                "Clone or open the repo, create a branch named lab/m6s4, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Inspector and Debugging MCP Servers. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "modelcontextprotocol/example-remote-server",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Inspector and Debugging MCP Servers. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "modelcontextprotocol/example-remote-server",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Inspector and Debugging MCP Servers. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "modelcontextprotocol/example-remote-server",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "modelcontextprotocol/example-remote-server",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "modelcontextprotocol/example-remote-server",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Inspector and Debugging MCP Servers: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m6s5",
         "title": "Client Integration Flow",
         "minutes": 15,
@@ -2765,6 +5919,89 @@ const M = [
             "v": "In production, add auth, input validation, timeout handling, logging, and clear user approval boundaries for tools that mutate data."
           }
         ]
+      },
+      {
+        "id": "m6s5_practice",
+        "title": "Hands-on Lab: Client Integration Flow",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is modelcontextprotocol/example-remote-server because it supports MCP tools/resources/prompts and remote-server architecture."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "modelcontextprotocol/example-remote-server",
+                "Clone or open the repo, create a branch named lab/m6s5, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Client Integration Flow. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "modelcontextprotocol/example-remote-server",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Client Integration Flow. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "modelcontextprotocol/example-remote-server",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Client Integration Flow. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "modelcontextprotocol/example-remote-server",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "modelcontextprotocol/example-remote-server",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "modelcontextprotocol/example-remote-server",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Client Integration Flow: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
       }
     ]
   },
@@ -2773,7 +6010,7 @@ const M = [
     "title": "Automation: Hooks, Skills, Subagents, SDK, and GitHub",
     "color": "#0891B2",
     "bg": "#164E63",
-    "minutes": 75,
+    "minutes": 165,
     "sections": [
       {
         "id": "m7s1",
@@ -2806,6 +6043,89 @@ const M = [
           {
             "t": "note",
             "v": "Hooks are best for non-negotiable rules. If a rule needs judgment, make it a review command or subagent instead."
+          }
+        ]
+      },
+      {
+        "id": "m7s1_practice",
+        "title": "Hands-on Lab: Hooks: Deterministic Guardrails Around the Agent",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/skills because it supports real SKILL.md structure and reusable instruction packaging."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/skills",
+                "Clone or open the repo, create a branch named lab/m7s1, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Hooks: Deterministic Guardrails Around the Agent. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/skills",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Hooks: Deterministic Guardrails Around the Agent. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/skills",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Hooks: Deterministic Guardrails Around the Agent. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/skills",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/skills",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/skills",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Hooks: Deterministic Guardrails Around the Agent: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -2848,6 +6168,89 @@ const M = [
         ]
       },
       {
+        "id": "m7s2_practice",
+        "title": "Hands-on Lab: Skills: Reusable Task-Specific Instruction Packs",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/skills because it supports real SKILL.md structure and reusable instruction packaging."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/skills",
+                "Clone or open the repo, create a branch named lab/m7s2, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Skills: Reusable Task-Specific Instruction Packs. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/skills",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Skills: Reusable Task-Specific Instruction Packs. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/skills",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Skills: Reusable Task-Specific Instruction Packs. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/skills",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/skills",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/skills",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Skills: Reusable Task-Specific Instruction Packs: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
+      },
+      {
         "id": "m7s3",
         "title": "Subagents: Specialized Workers with Clean Context",
         "minutes": 15,
@@ -2873,7 +6276,7 @@ const M = [
           {
             "t": "code",
             "lang": "markdown",
-            "v": "---\nname: security-reviewer\ndescription: Use to review code for security vulnerabilities, auth bypasses, injection, unsafe secrets handling, and access-control gaps.\ntools: Read, Bash\n---\n\nYou are a security-focused code reviewer. Return exactly:\n## Summary\n## Findings\n- [HIGH/MED/LOW] file:line \u2014 issue \u2014 exploit scenario \u2014 fix\n## Missing Tests\n## Confidence and Limits"
+            "v": "---\nname: security-reviewer\ndescription: Use to review code for security vulnerabilities, auth bypasses, injection, unsafe secrets handling, and access-control gaps.\ntools: Read, Bash\n---\n\nYou are a security-focused code reviewer. Return exactly:\n## Summary\n## Findings\n- [HIGH/MED/LOW] file:line — issue — exploit scenario — fix\n## Missing Tests\n## Confidence and Limits"
           },
           {
             "t": "h",
@@ -2903,6 +6306,89 @@ const M = [
                 "Grant only tools needed"
               ]
             ]
+          }
+        ]
+      },
+      {
+        "id": "m7s3_practice",
+        "title": "Hands-on Lab: Subagents: Specialized Workers with Clean Context",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/skills because it supports real SKILL.md structure and reusable instruction packaging."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/skills",
+                "Clone or open the repo, create a branch named lab/m7s3, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Subagents: Specialized Workers with Clean Context. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/skills",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Subagents: Specialized Workers with Clean Context. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/skills",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Subagents: Specialized Workers with Clean Context. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/skills",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/skills",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/skills",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Subagents: Specialized Workers with Clean Context: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -2947,6 +6433,89 @@ const M = [
               "Require human approval before writing to protected branches",
               "Set budgets, timeouts, and max turns"
             ]
+          }
+        ]
+      },
+      {
+        "id": "m7s4_practice",
+        "title": "Hands-on Lab: Agent SDK and Scripted Workflows",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/skills because it supports real SKILL.md structure and reusable instruction packaging."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/skills",
+                "Clone or open the repo, create a branch named lab/m7s4, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: Agent SDK and Scripted Workflows. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/skills",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to Agent SDK and Scripted Workflows. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/skills",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice Agent SDK and Scripted Workflows. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/skills",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/skills",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/skills",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for Agent SDK and Scripted Workflows: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
           }
         ]
       },
@@ -3007,195 +6576,863 @@ const M = [
             ]
           }
         ]
+      },
+      {
+        "id": "m7s5_practice",
+        "title": "Hands-on Lab: GitHub Automation with Claude Code",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "This is a separate practice subtopic for the lesson above. The original explanation stays unchanged; this lab makes students apply it inside a public repository. The recommended repo is anthropics/skills because it supports real SKILL.md structure and reusable instruction packaging."
+          },
+          {
+            "t": "h",
+            "v": "How students should work"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Fork the repo or work in a disposable local clone.",
+              "Create a dedicated branch for this lab.",
+              "Use Claude Code to explore first, then plan, then act.",
+              "Keep the change small; the point is learning the concept, not rewriting the repo.",
+              "End with verification, git diff review, and a written reflection."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Subtask",
+              "Repo",
+              "Step-by-step instruction",
+              "Claude Code prompt",
+              "Expected outcome"
+            ],
+            "r": [
+              [
+                "1. Repo orientation",
+                "anthropics/skills",
+                "Clone or open the repo, create a branch named lab/m7s5, and ask Claude to inspect only the files needed for this topic. Keep the original repo unchanged except for your lab branch.",
+                "Explore this repo for the topic: GitHub Automation with Claude Code. Read the README, package scripts, and the smallest set of files needed. Do not edit anything. Explain what I need to understand first.",
+                "A short map of relevant folders/files and a list of what Claude has evidence for."
+              ],
+              [
+                "2. Trace the concept in real code",
+                "anthropics/skills",
+                "Ask Claude to find where this lesson concept appears in the repo. Require file names and a plain-English explanation before any implementation.",
+                "Find concrete examples related to GitHub Automation with Claude Code. For each example, give file path, what the code does, and why it matters for this lesson. Do not modify files.",
+                "At least 3 concrete file references with explanations tied to the lesson."
+              ],
+              [
+                "3. Create a small plan",
+                "anthropics/skills",
+                "Choose one tiny improvement, documentation addition, test, or review task. Force Claude to write a plan with exact files and risk notes before it edits.",
+                "Propose one small safe task that helps me practice GitHub Automation with Claude Code. List exact files to touch, commands to run, risks, and rollback steps. Do not edit yet.",
+                "A scoped plan small enough to complete in one session."
+              ],
+              [
+                "4. Execute with checkpoints",
+                "anthropics/skills",
+                "Let Claude perform the planned change or analysis. After every major action, require it to summarize what changed and why. Keep changes minimal.",
+                "Implement only the approved plan. Pause after each file change and explain why the change belongs in scope. Do not add unrelated improvements.",
+                "A focused change, generated note, review output, test, or workflow asset."
+              ],
+              [
+                "5. Verify and inspect",
+                "anthropics/skills",
+                "Run the relevant command from package.json, README, or repo docs. If commands cannot run, ask Claude to explain why and provide manual verification steps.",
+                "Run the smallest relevant verification command. If it fails, explain the failure before fixing. Then show git diff and summarize exactly what changed.",
+                "Build/test/lint output or a clear manual verification checklist plus a reviewed diff."
+              ],
+              [
+                "6. Reflect and document",
+                "anthropics/skills",
+                "Ask Claude to turn the exercise into a reusable note: when to use the concept, mistakes to avoid, and a reusable prompt for future projects.",
+                "Write a reusable learning note for GitHub Automation with Claude Code: when to use it, why it matters, common mistakes, and one prompt I can reuse in another repo.",
+                "A reusable mini-playbook students can keep in their course notes."
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: make students read Claude’s plan out loud before implementation. If the plan is vague, stop and force a narrower plan."
+          }
+        ]
       }
     ]
   },
   {
     "id": "m8",
-    "title": "Capstone and GitHub Pages Publishing",
-    "color": "#A3E635",
-    "bg": "#365314",
-    "minutes": 30,
+    "title": "Build DevFlow: Complete Project Development with Claude Code",
+    "color": "#22C55E",
+    "bg": "#052E16",
+    "minutes": 340,
     "sections": [
       {
-        "id": "m8s1",
-        "title": "Capstone Brief",
-        "minutes": 6,
+        "id": "m8dev0",
+        "title": "Final Project Overview: Build DevFlow from Scratch",
+        "minutes": 20,
         "content": [
           {
             "t": "p",
-            "v": "The capstone makes the course concrete. Students will package their own Claude Code workflow assets, improve this course app, and publish it through GitHub Pages. The outcome is a shareable site and a reusable AI workflow kit."
+            "v": "The old GitHub Pages publishing chapter has been removed. In its place, students build DevFlow: a serious full-stack project-management platform using Claude Code as the engineering agent. The project is intentionally larger than a demo page: it includes product planning, monorepo setup, database design, authentication, workspace permissions, project/task APIs, frontend screens, tests, AI workflow assets, CI, documentation, and a final demo script."
           },
           {
             "t": "h",
-            "v": "Capstone deliverables"
+            "v": "What students will build"
           },
           {
             "t": "ul",
             "v": [
-              "Expanded React course app deployed publicly",
-              "CLAUDE.md customized for the app repository",
-              "At least two custom commands",
-              "A GitHub Pages deployment workflow",
-              "A final README explaining how to run, edit, and deploy the course"
+              "React + Vite + TypeScript frontend",
+              "Node + Express + TypeScript backend",
+              "PostgreSQL + Prisma data model",
+              "Authentication and workspace membership",
+              "Projects, tasks, labels, comments, activity feed, filters, and Kanban board",
+              "Claude Code project memory, commands, subagents, hook plan, CI workflow, and final docs"
             ]
           },
           {
-            "t": "note",
-            "v": "This is intentionally small. The goal is to practice the complete loop, not build a huge product."
-          }
-        ]
-      },
-      {
-        "id": "m8s2",
-        "title": "Prepare the Vite Project for GitHub",
-        "minutes": 6,
-        "content": [
-          {
-            "t": "p",
-            "v": "GitHub Pages can host the built static files from a Vite React app. The project needs a package file, Vite config, source files, and a GitHub Actions workflow that builds and deploys the dist directory."
-          },
-          {
             "t": "h",
-            "v": "Expected project structure"
-          },
-          {
-            "t": "code",
-            "lang": "text",
-            "v": "claude-code-8-hour-course/\n  index.html\n  package.json\n  vite.config.js\n  src/\n    main.jsx\n    App.jsx\n  .github/workflows/deploy.yml\n  README.md"
-          },
-          {
-            "t": "code",
-            "lang": "bash",
-            "v": "npm install\nnpm run dev\nnpm run build\nnpm run preview"
-          },
-          {
-            "t": "note",
-            "v": "For a repository deployed at https://USERNAME.github.io/REPO/, Vite needs the correct base path. The included config calculates it from GITHUB_REPOSITORY during GitHub Actions builds."
-          }
-        ]
-      },
-      {
-        "id": "m8s3",
-        "title": "Deploy with GitHub Pages",
-        "minutes": 6,
-        "content": [
-          {
-            "t": "p",
-            "v": "GitHub Pages deployment is mostly configuration: push the repo, enable Pages with GitHub Actions as the source, and let the workflow build the site. The generated link appears in the deployment output."
-          },
-          {
-            "t": "h",
-            "v": "Deployment steps"
-          },
-          {
-            "t": "ol",
-            "v": [
-              "Create a new GitHub repository",
-              "Push the Vite project to main",
-              "Go to Settings \u2192 Pages",
-              "Set Build and deployment source to GitHub Actions",
-              "Push again or run the workflow manually",
-              "Open the Pages URL after deployment finishes"
-            ]
-          },
-          {
-            "t": "code",
-            "lang": "bash",
-            "v": "git init\ngit add .\ngit commit -m \"docs: add expanded Claude Code course\"\ngit branch -M main\ngit remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git\ngit push -u origin main"
-          },
-          {
-            "t": "note",
-            "v": "If the page is blank after deployment, check the Vite base path, browser console, and Actions build logs first."
-          }
-        ]
-      },
-      {
-        "id": "m8s4",
-        "title": "Final Rubric",
-        "minutes": 6,
-        "content": [
-          {
-            "t": "p",
-            "v": "Use this rubric to assess whether students truly learned the workflow, not just clicked through the notes."
+            "v": "Reference repos to use, not copy"
           },
           {
             "t": "table",
             "h": [
-              "Skill",
-              "Meets expectation"
+              "Reference repo",
+              "How to use it in this project"
             ],
             "r": [
               [
-                "Explore",
-                "Can map a repo with evidence before edits"
+                "gothinkster/node-express-realworld-example-app",
+                "Study API structure, auth flow, CRUD patterns, and validation trade-offs."
               ],
               [
-                "Plan",
-                "Can produce a safe, reviewable implementation plan"
+                "alan2207/bulletproof-react",
+                "Study scalable frontend folder organization, routing, components, and API-layer separation."
               ],
               [
-                "Code",
-                "Can supervise small agentic edits and stop scope creep"
+                "anthropics/claude-code-action",
+                "Study GitHub automation patterns for issue/PR workflows and CI safety."
               ],
               [
-                "Verify",
-                "Runs and reports relevant checks"
+                "anthropics/skills",
+                "Study reusable instruction packaging and SKILL.md structure."
               ],
               [
-                "Customize",
-                "Creates useful CLAUDE.md and commands"
-              ],
-              [
-                "Automate",
-                "Can explain where hooks, skills, subagents, MCP, and GitHub fit"
-              ],
-              [
-                "Publish",
-                "Deploys the course app to GitHub Pages"
+                "modelcontextprotocol/example-remote-server",
+                "Study MCP architecture if students want to add an optional integration later."
               ]
             ]
           },
           {
-            "t": "h",
-            "v": "Final reflection prompt"
-          },
-          {
-            "t": "code",
-            "lang": "text",
-            "v": "Reflect on your Claude Code workflow. What will you allow Claude to do autonomously? What will always require review? What team standards should be encoded in CLAUDE.md, commands, hooks, or skills?"
+            "t": "note",
+            "v": "By the end of the 80 tasks, students should have a working full-stack codebase plus the Claude Code workflows needed to maintain it."
           }
         ]
       },
       {
-        "id": "m8s5",
-        "title": "Next Steps After the Course",
-        "minutes": 6,
+        "id": "m8dev1",
+        "title": "Project Phase 1: Product Strategy and Scope",
+        "minutes": 40,
         "content": [
           {
             "t": "p",
-            "v": "After the workshop, the best next step is to apply the workflow to a real but low-risk task. Pick a documentation improvement, a missing test, a small bug, or a UI polish task. Avoid starting with a production-critical refactor."
+            "v": "This final chapter replaces the old publishing capstone. Students now build a serious full-stack product from scratch: DevFlow, an AI-assisted team project-management platform. This phase has eight concrete subtopics. Each task is designed to be executed with Claude Code, reviewed by the student, and committed as real project work."
           },
           {
             "t": "h",
-            "v": "30-day adoption plan"
+            "v": "Project rule for this phase"
           },
           {
-            "t": "ol",
+            "t": "ul",
             "v": [
-              "Week 1: use Explore \u2192 Plan on real tickets but keep edits small",
-              "Week 2: add CLAUDE.md and two commands to one team repo",
-              "Week 3: introduce AI-assisted review before PRs",
-              "Week 4: evaluate one hook, skill, or MCP server for a repeated workflow"
+              "Every task starts with exploration or planning before implementation.",
+              "Claude must name exact files before editing them.",
+              "Students must inspect git diff before committing.",
+              "Every feature must have either automated verification or a manual test checklist.",
+              "Do not copy from the reference repos; use them as architectural references only."
             ]
           },
           {
-            "t": "h",
-            "v": "Portfolio idea"
+            "t": "table",
+            "h": [
+              "Task / subtopic",
+              "Detailed student steps",
+              "Claude Code prompt",
+              "Deliverable"
+            ],
+            "r": [
+              [
+                "1. Define the product problem",
+                "Write the problem DevFlow solves, the target user, and the painful workflow it improves.",
+                "Ask Claude to draft a product brief for a team project-management platform for small software teams. Include users, pain points, and success metrics.",
+                "product-brief.md"
+              ],
+              [
+                "2. Define user roles",
+                "Create roles for owner, admin, member, and viewer. Clarify what each can and cannot do.",
+                "Design the role model for DevFlow. Return a permission table and call out security risks.",
+                "roles-and-permissions.md"
+              ],
+              [
+                "3. Write core user journeys",
+                "Describe journeys for creating a workspace, inviting users, creating a project, creating tasks, and reviewing progress.",
+                "Write five end-to-end user journeys for DevFlow. Keep each journey testable.",
+                "user-journeys.md"
+              ],
+              [
+                "4. Set MVP boundaries",
+                "Separate must-have features from nice-to-have features. Avoid building chat, billing, and integrations in version one.",
+                "Create an MVP scope for DevFlow with included, excluded, and deferred features.",
+                "mvp-scope.md"
+              ],
+              [
+                "5. Create acceptance criteria",
+                "For each MVP feature, define what must be true before it is considered done.",
+                "Turn the MVP scope into acceptance criteria using Given/When/Then format.",
+                "acceptance-criteria.md"
+              ],
+              [
+                "6. Create milestone plan",
+                "Break the project into backend foundation, auth, task system, frontend, testing, and automation milestones.",
+                "Create a milestone plan for building DevFlow with Claude Code. Include risks and checkpoints.",
+                "milestone-plan.md"
+              ],
+              [
+                "7. Define data entities",
+                "List the major nouns: user, workspace, membership, project, task, label, comment, activity log.",
+                "Identify DevFlow’s core data entities and relationships before schema design.",
+                "entity-map.md"
+              ],
+              [
+                "8. Write the first README",
+                "Create a README that explains what the project is, how to run it, and what is still planned.",
+                "Draft a professional README for DevFlow before any code exists.",
+                "README.md"
+              ]
+            ]
           },
           {
+            "t": "note",
+            "v": "Instructor cue: this is not a toy publish task. The final outcome is a real monorepo with frontend, backend, database schema, auth, workspace security, task management, tests, automation assets, and documentation."
+          }
+        ]
+      },
+      {
+        "id": "m8dev2",
+        "title": "Project Phase 2: Repository and Tooling Setup",
+        "minutes": 40,
+        "content": [
+          {
             "t": "p",
-            "v": "Publish your GitHub Pages course site and link to the workflow kit in the repository README. This shows both front-end deployment ability and practical AI engineering workflow design."
+            "v": "This final chapter replaces the old publishing capstone. Students now build a serious full-stack product from scratch: DevFlow, an AI-assisted team project-management platform. This phase has eight concrete subtopics. Each task is designed to be executed with Claude Code, reviewed by the student, and committed as real project work."
+          },
+          {
+            "t": "h",
+            "v": "Project rule for this phase"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Every task starts with exploration or planning before implementation.",
+              "Claude must name exact files before editing them.",
+              "Students must inspect git diff before committing.",
+              "Every feature must have either automated verification or a manual test checklist.",
+              "Do not copy from the reference repos; use them as architectural references only."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Task / subtopic",
+              "Detailed student steps",
+              "Claude Code prompt",
+              "Deliverable"
+            ],
+            "r": [
+              [
+                "9. Create monorepo structure",
+                "Create apps/web, apps/api, packages/shared, docs, and .claude folders.",
+                "Plan and create a monorepo structure for a React frontend and Express backend. Explain every folder.",
+                "folder structure committed"
+              ],
+              [
+                "10. Initialize frontend",
+                "Create a Vite React TypeScript app in apps/web.",
+                "Initialize the frontend with Vite React TypeScript and remove boilerplate that does not belong.",
+                "apps/web working"
+              ],
+              [
+                "11. Initialize backend",
+                "Create a TypeScript Express API in apps/api.",
+                "Create a minimal Express TypeScript API with a health route and clean folder structure.",
+                "apps/api working"
+              ],
+              [
+                "12. Add root scripts",
+                "Add scripts for dev, build, lint, test, api:dev, web:dev.",
+                "Create package scripts that let a developer run frontend and backend from the repo root.",
+                "package scripts"
+              ],
+              [
+                "13. Add environment templates",
+                "Create .env.example files for API and web.",
+                "Create safe environment template files. Do not include secrets.",
+                ".env.example files"
+              ],
+              [
+                "14. Add formatting and linting",
+                "Add Prettier/ESLint or a simple formatting baseline.",
+                "Set up formatting and linting rules appropriate for this project. Keep them beginner-friendly.",
+                "format/lint configured"
+              ],
+              [
+                "15. Add Git hygiene",
+                "Create .gitignore and branch naming recommendations.",
+                "Review the repo for files that should never be committed and update .gitignore.",
+                ".gitignore updated"
+              ],
+              [
+                "16. Commit initial scaffold",
+                "Review the diff and create the first commit.",
+                "Review the initial scaffold diff and write a conventional commit message.",
+                "first commit"
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: this is not a toy publish task. The final outcome is a real monorepo with frontend, backend, database schema, auth, workspace security, task management, tests, automation assets, and documentation."
+          }
+        ]
+      },
+      {
+        "id": "m8dev3",
+        "title": "Project Phase 3: CLAUDE.md and AI Workflow Assets",
+        "minutes": 40,
+        "content": [
+          {
+            "t": "p",
+            "v": "This final chapter replaces the old publishing capstone. Students now build a serious full-stack product from scratch: DevFlow, an AI-assisted team project-management platform. This phase has eight concrete subtopics. Each task is designed to be executed with Claude Code, reviewed by the student, and committed as real project work."
+          },
+          {
+            "t": "h",
+            "v": "Project rule for this phase"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Every task starts with exploration or planning before implementation.",
+              "Claude must name exact files before editing them.",
+              "Students must inspect git diff before committing.",
+              "Every feature must have either automated verification or a manual test checklist.",
+              "Do not copy from the reference repos; use them as architectural references only."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Task / subtopic",
+              "Detailed student steps",
+              "Claude Code prompt",
+              "Deliverable"
+            ],
+            "r": [
+              [
+                "17. Create CLAUDE.md",
+                "Write the project memory file at the repo root.",
+                "Create a CLAUDE.md that explains DevFlow, stack, commands, workflow, and safety rules.",
+                "CLAUDE.md"
+              ],
+              [
+                "18. Add exploration rules",
+                "Tell Claude to explore before editing and to cite file paths.",
+                "Improve CLAUDE.md with strict Explore → Plan → Code → Verify → Commit rules.",
+                "workflow rules"
+              ],
+              [
+                "19. Add backend rules",
+                "Add rules for API routing, validation, errors, and Prisma usage.",
+                "Add backend engineering rules to CLAUDE.md for Express, Prisma, validation, and auth.",
+                "backend rules"
+              ],
+              [
+                "20. Add frontend rules",
+                "Add rules for React component structure, state, forms, and UI consistency.",
+                "Add frontend engineering rules to CLAUDE.md for React, routes, API clients, and components.",
+                "frontend rules"
+              ],
+              [
+                "21. Add security rules",
+                "Add rules for secrets, auth, permissions, and unsafe commands.",
+                "Add security rules Claude must follow while working on DevFlow.",
+                "security rules"
+              ],
+              [
+                "22. Create /review command",
+                "Create .claude/commands/review.md for reviewing diffs.",
+                "Create a reusable review command that checks security, tests, scope creep, and maintainability.",
+                "/review command"
+              ],
+              [
+                "23. Create /test-plan command",
+                "Create a command that asks Claude to design tests before writing them.",
+                "Create .claude/commands/test-plan.md for generating test plans from acceptance criteria.",
+                "/test-plan command"
+              ],
+              [
+                "24. Create /pr-desc command",
+                "Create a command that writes PR summaries from git diff.",
+                "Create .claude/commands/pr-desc.md that outputs title, summary, test evidence, and risk notes.",
+                "/pr-desc command"
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: this is not a toy publish task. The final outcome is a real monorepo with frontend, backend, database schema, auth, workspace security, task management, tests, automation assets, and documentation."
+          }
+        ]
+      },
+      {
+        "id": "m8dev4",
+        "title": "Project Phase 4: Database and Backend Foundation",
+        "minutes": 40,
+        "content": [
+          {
+            "t": "p",
+            "v": "This final chapter replaces the old publishing capstone. Students now build a serious full-stack product from scratch: DevFlow, an AI-assisted team project-management platform. This phase has eight concrete subtopics. Each task is designed to be executed with Claude Code, reviewed by the student, and committed as real project work."
+          },
+          {
+            "t": "h",
+            "v": "Project rule for this phase"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Every task starts with exploration or planning before implementation.",
+              "Claude must name exact files before editing them.",
+              "Students must inspect git diff before committing.",
+              "Every feature must have either automated verification or a manual test checklist.",
+              "Do not copy from the reference repos; use them as architectural references only."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Task / subtopic",
+              "Detailed student steps",
+              "Claude Code prompt",
+              "Deliverable"
+            ],
+            "r": [
+              [
+                "25. Install Prisma",
+                "Add Prisma to the backend and initialize schema files.",
+                "Set up Prisma for the API. Explain generated files and commands.",
+                "Prisma initialized"
+              ],
+              [
+                "26. Design schema v1",
+                "Create User, Workspace, Membership, Project, Task, Label, Comment, ActivityLog models.",
+                "Design the first Prisma schema for DevFlow. Explain relationships before writing.",
+                "schema.prisma draft"
+              ],
+              [
+                "27. Review schema risks",
+                "Ask Claude to review cascade deletes, indexes, uniqueness, and multi-tenant safety.",
+                "Review this schema for data integrity, tenant isolation, and query performance risks.",
+                "schema review"
+              ],
+              [
+                "28. Create migration",
+                "Run the migration or create the migration files depending on the local DB setup.",
+                "Run or prepare the first Prisma migration and explain how to reset safely in development.",
+                "migration"
+              ],
+              [
+                "29. Create database client",
+                "Add a single Prisma client module.",
+                "Create a database client module and explain why the app should import it from one place.",
+                "db client"
+              ],
+              [
+                "30. Add API error shape",
+                "Standardize error responses.",
+                "Create shared API error helpers and middleware for consistent JSON errors.",
+                "error helpers"
+              ],
+              [
+                "31. Add validation pattern",
+                "Choose Zod or similar validation and create a pattern for request validation.",
+                "Set up request validation for Express routes. Use a small reusable pattern.",
+                "validation utility"
+              ],
+              [
+                "32. Add health and diagnostics",
+                "Create /health and a minimal diagnostic route if appropriate.",
+                "Add a health-check endpoint and explain what it should and should not expose.",
+                "health endpoint"
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: this is not a toy publish task. The final outcome is a real monorepo with frontend, backend, database schema, auth, workspace security, task management, tests, automation assets, and documentation."
+          }
+        ]
+      },
+      {
+        "id": "m8dev5",
+        "title": "Project Phase 5: Authentication and Workspace Security",
+        "minutes": 40,
+        "content": [
+          {
+            "t": "p",
+            "v": "This final chapter replaces the old publishing capstone. Students now build a serious full-stack product from scratch: DevFlow, an AI-assisted team project-management platform. This phase has eight concrete subtopics. Each task is designed to be executed with Claude Code, reviewed by the student, and committed as real project work."
+          },
+          {
+            "t": "h",
+            "v": "Project rule for this phase"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Every task starts with exploration or planning before implementation.",
+              "Claude must name exact files before editing them.",
+              "Students must inspect git diff before committing.",
+              "Every feature must have either automated verification or a manual test checklist.",
+              "Do not copy from the reference repos; use them as architectural references only."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Task / subtopic",
+              "Detailed student steps",
+              "Claude Code prompt",
+              "Deliverable"
+            ],
+            "r": [
+              [
+                "33. Create auth routes plan",
+                "Plan register, login, current user, logout/token strategy.",
+                "Plan authentication endpoints for DevFlow with exact files and security considerations.",
+                "auth plan"
+              ],
+              [
+                "34. Implement registration",
+                "Create register endpoint with validation and password hashing.",
+                "Implement user registration safely. Include validation, password hashing, and duplicate email handling.",
+                "register endpoint"
+              ],
+              [
+                "35. Implement login",
+                "Create login endpoint with credential validation.",
+                "Implement login safely. Return a token or session response without leaking sensitive info.",
+                "login endpoint"
+              ],
+              [
+                "36. Create auth middleware",
+                "Decode and verify auth on protected routes.",
+                "Create authentication middleware and explain how routes should use it.",
+                "auth middleware"
+              ],
+              [
+                "37. Create current-user route",
+                "Return the authenticated user profile.",
+                "Add a current-user endpoint that uses auth middleware and excludes sensitive fields.",
+                "me endpoint"
+              ],
+              [
+                "38. Model workspace membership",
+                "Use Membership to connect users to workspaces with roles.",
+                "Implement workspace membership checks. Explain owner/admin/member/viewer behavior.",
+                "membership rules"
+              ],
+              [
+                "39. Add authorization helper",
+                "Create a reusable function for checking access to a workspace/project.",
+                "Create authorization helpers for workspace and project access. Keep them testable.",
+                "authorization helper"
+              ],
+              [
+                "40. Security review auth",
+                "Ask a security-reviewer subagent or Claude to review auth code.",
+                "Review the auth and authorization code for common vulnerabilities and missing tests.",
+                "security review"
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: this is not a toy publish task. The final outcome is a real monorepo with frontend, backend, database schema, auth, workspace security, task management, tests, automation assets, and documentation."
+          }
+        ]
+      },
+      {
+        "id": "m8dev6",
+        "title": "Project Phase 6: Projects, Tasks, Comments, and Activity",
+        "minutes": 40,
+        "content": [
+          {
+            "t": "p",
+            "v": "This final chapter replaces the old publishing capstone. Students now build a serious full-stack product from scratch: DevFlow, an AI-assisted team project-management platform. This phase has eight concrete subtopics. Each task is designed to be executed with Claude Code, reviewed by the student, and committed as real project work."
+          },
+          {
+            "t": "h",
+            "v": "Project rule for this phase"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Every task starts with exploration or planning before implementation.",
+              "Claude must name exact files before editing them.",
+              "Students must inspect git diff before committing.",
+              "Every feature must have either automated verification or a manual test checklist.",
+              "Do not copy from the reference repos; use them as architectural references only."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Task / subtopic",
+              "Detailed student steps",
+              "Claude Code prompt",
+              "Deliverable"
+            ],
+            "r": [
+              [
+                "41. Workspace CRUD",
+                "Build endpoints for creating, listing, updating, and archiving workspaces.",
+                "Implement workspace CRUD with permission checks and validation.",
+                "workspace API"
+              ],
+              [
+                "42. Project CRUD",
+                "Build endpoints for projects inside a workspace.",
+                "Implement project CRUD scoped to a workspace. Prevent cross-workspace access.",
+                "project API"
+              ],
+              [
+                "43. Task CRUD",
+                "Build task create/read/update/delete endpoints.",
+                "Implement task CRUD with status, priority, due date, and assignee fields.",
+                "task API"
+              ],
+              [
+                "44. Task filtering",
+                "Add filters by status, priority, assignee, label, and search text.",
+                "Add task filtering and explain query parameters and indexes.",
+                "task filters"
+              ],
+              [
+                "45. Labels",
+                "Add labels per workspace or project.",
+                "Implement labels with create/list/attach/remove behavior.",
+                "labels API"
+              ],
+              [
+                "46. Comments",
+                "Add comments to tasks.",
+                "Implement task comments with author tracking and validation.",
+                "comments API"
+              ],
+              [
+                "47. Activity logging",
+                "Record task creation, status changes, comments, and assignment changes.",
+                "Implement activity logging for important events without logging secrets.",
+                "activity logs"
+              ],
+              [
+                "48. Backend API tests",
+                "Add API tests for the most important happy paths and permission failures.",
+                "Create a backend test plan and implement the highest-value tests first.",
+                "API tests"
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: this is not a toy publish task. The final outcome is a real monorepo with frontend, backend, database schema, auth, workspace security, task management, tests, automation assets, and documentation."
+          }
+        ]
+      },
+      {
+        "id": "m8dev7",
+        "title": "Project Phase 7: Frontend Application Build",
+        "minutes": 40,
+        "content": [
+          {
+            "t": "p",
+            "v": "This final chapter replaces the old publishing capstone. Students now build a serious full-stack product from scratch: DevFlow, an AI-assisted team project-management platform. This phase has eight concrete subtopics. Each task is designed to be executed with Claude Code, reviewed by the student, and committed as real project work."
+          },
+          {
+            "t": "h",
+            "v": "Project rule for this phase"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Every task starts with exploration or planning before implementation.",
+              "Claude must name exact files before editing them.",
+              "Students must inspect git diff before committing.",
+              "Every feature must have either automated verification or a manual test checklist.",
+              "Do not copy from the reference repos; use them as architectural references only."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Task / subtopic",
+              "Detailed student steps",
+              "Claude Code prompt",
+              "Deliverable"
+            ],
+            "r": [
+              [
+                "49. Create app shell",
+                "Build routes, layout, navigation, and protected route behavior.",
+                "Create the React app shell for DevFlow with public and authenticated layouts.",
+                "app shell"
+              ],
+              [
+                "50. Auth screens",
+                "Build login and registration pages with validation and error states.",
+                "Implement login and registration UI connected to the API client.",
+                "auth UI"
+              ],
+              [
+                "51. API client",
+                "Create a typed API client layer.",
+                "Create a frontend API client and explain how errors and auth tokens are handled.",
+                "API client"
+              ],
+              [
+                "52. Dashboard page",
+                "Show workspaces, recent activity, and project summary.",
+                "Build the dashboard page with loading, empty, and error states.",
+                "dashboard"
+              ],
+              [
+                "53. Workspace page",
+                "List projects, members, and workspace actions.",
+                "Build the workspace page and connect it to backend data.",
+                "workspace UI"
+              ],
+              [
+                "54. Project page",
+                "Show task list, filters, and project metadata.",
+                "Build the project page with task list and filters.",
+                "project UI"
+              ],
+              [
+                "55. Task detail page",
+                "Show task details, comments, status changes, and labels.",
+                "Build the task detail page with editable fields and comments.",
+                "task detail UI"
+              ],
+              [
+                "56. Kanban board",
+                "Add board columns for backlog, todo, in progress, and done.",
+                "Build a Kanban board for tasks. Keep drag-and-drop optional; start with button-based status changes.",
+                "Kanban board"
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: this is not a toy publish task. The final outcome is a real monorepo with frontend, backend, database schema, auth, workspace security, task management, tests, automation assets, and documentation."
+          }
+        ]
+      },
+      {
+        "id": "m8dev8",
+        "title": "Project Phase 8: Quality, Automation, and Final Handoff",
+        "minutes": 40,
+        "content": [
+          {
+            "t": "p",
+            "v": "This final chapter replaces the old publishing capstone. Students now build a serious full-stack product from scratch: DevFlow, an AI-assisted team project-management platform. This phase has eight concrete subtopics. Each task is designed to be executed with Claude Code, reviewed by the student, and committed as real project work."
+          },
+          {
+            "t": "h",
+            "v": "Project rule for this phase"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Every task starts with exploration or planning before implementation.",
+              "Claude must name exact files before editing them.",
+              "Students must inspect git diff before committing.",
+              "Every feature must have either automated verification or a manual test checklist.",
+              "Do not copy from the reference repos; use them as architectural references only."
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Task / subtopic",
+              "Detailed student steps",
+              "Claude Code prompt",
+              "Deliverable"
+            ],
+            "r": [
+              [
+                "57. Frontend tests",
+                "Add component or integration tests for auth, task list, and task detail.",
+                "Create frontend tests for critical user flows. Avoid brittle snapshot-only tests.",
+                "frontend tests"
+              ],
+              [
+                "58. Backend regression tests",
+                "Add tests for auth, permissions, and task filters.",
+                "Add backend regression tests for security-sensitive behavior.",
+                "regression tests"
+              ],
+              [
+                "59. Create subagents",
+                "Create security-reviewer, test-writer, and docs-writer subagents.",
+                "Design three DevFlow subagents with limited tools and strict output formats.",
+                "subagents"
+              ],
+              [
+                "60. Add safety hooks plan",
+                "Document hooks for blocking destructive commands and running formatting.",
+                "Design safe Claude Code hooks for this repo. Explain which are mandatory and which are optional.",
+                "hooks plan"
+              ],
+              [
+                "61. Create CI workflow",
+                "Add GitHub Actions for lint/test/build.",
+                "Create a GitHub Actions workflow that runs install, lint, test, and build safely.",
+                "CI workflow"
+              ],
+              [
+                "62. Final review pass",
+                "Ask Claude to review the entire project against the acceptance criteria.",
+                "Review DevFlow against the original acceptance criteria. Return pass/fail and fix list.",
+                "final review"
+              ],
+              [
+                "63. Write documentation",
+                "Generate architecture, API, and user documentation.",
+                "Create final docs: architecture, API reference, setup guide, and user walkthrough.",
+                "project docs"
+              ],
+              [
+                "64. Demo script and roadmap",
+                "Write a live demo script and next-feature roadmap.",
+                "Write a 10-minute demo script and a prioritized roadmap for v2 features.",
+                "demo script"
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Instructor cue: this is not a toy publish task. The final outcome is a real monorepo with frontend, backend, database schema, auth, workspace security, task management, tests, automation assets, and documentation."
           }
         ]
       }
@@ -3331,7 +7568,7 @@ export default function App() {
           <div style={{ marginBottom: 20 }}>
             <div style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "#79799b", fontWeight: 800, marginBottom: 8 }}>8+ Hour Course</div>
             <h1 style={{ margin: "0 0 8px", fontSize: 25, letterSpacing: "-0.04em", lineHeight: 1.05 }}>Claude Code Masterclass</h1>
-            <p style={{ margin: 0, color: "#9292b1", fontSize: 13, lineHeight: 1.55 }}>Deep course notes with demos, labs, prompt packs, command mastery, checklists, MCP, hooks, skills, subagents, and GitHub Pages deployment.</p>
+            <p style={{ margin: 0, color: "#9292b1", fontSize: 13, lineHeight: 1.55 }}>Deep course notes with repo-based labs, command mastery, MCP, hooks, skills, subagents, GitHub automation, and a full-stack DevFlow build.</p>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>

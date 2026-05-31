@@ -37,3 +37,16 @@ The workflow installs dependencies, builds the Vite app and deploys the `dist` f
 ## New: Built-In Claude Code Commands Mastery
 
 This version adds a dedicated command mastery module with 90+ Claude Code slash commands, bundled skills, workflows, and aliases. It explains when to use each command, how it fits into a real engineering workflow, and why it matters. See `docs/claude-code-command-playbook.md` for the standalone command reference.
+
+
+## Latest expansion
+
+This version keeps the existing course content and adds separate hands-on practice subtopics after each lesson. Each practice subtopic includes 6 repo-based tasks with step-by-step instructions, Claude Code prompts, and expected deliverables.
+
+The old Chapter 9 / GitHub Pages publishing capstone was removed and replaced with **Build DevFlow: Complete Project Development with Claude Code**, an 80-task serious full-stack project build.
+
+Additional docs:
+
+- `docs/repo-practice-labs.md`
+- `docs/devflow-80-task-build-plan.md`
+- `docs/claude-code-command-playbook.md`
