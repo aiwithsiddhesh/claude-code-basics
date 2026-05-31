@@ -24,7 +24,7 @@ npm run preview
 4. Under **Build and deployment**, set **Source** to **GitHub Actions**.
 5. Push to `main` or run the workflow manually from the Actions tab.
 
-The workflow builds the Vite app and deploys the `dist` folder to GitHub Pages. The Vite `base` path is calculated from `GITHUB_REPOSITORY`, so the app works at `https://USERNAME.github.io/REPO_NAME/`.
+The workflow installs dependencies, builds the Vite app and deploys the `dist` folder to GitHub Pages. The Vite `base` path is calculated from `GITHUB_REPOSITORY`, so the app works at `https://USERNAME.github.io/REPO_NAME/`.
 
 ## Course size
 
@@ -32,3 +32,8 @@ The workflow builds the Vite app and deploys the `dist` folder to GitHub Pages. 
 - 39 lessons
 - 480 minutes / 8 hours
 - Includes demos, labs, prompt packs, checklists, MCP, hooks, skills, subagents, SDK, and GitHub publishing
+
+
+## New: Built-In Claude Code Commands Mastery
+
+This version adds a dedicated command mastery module with 90+ Claude Code slash commands, bundled skills, workflows, and aliases. It explains when to use each command, how it fits into a real engineering workflow, and why it matters. See `docs/claude-code-command-playbook.md` for the standalone command reference.
