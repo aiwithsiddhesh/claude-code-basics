@@ -1,0 +1,2174 @@
+import { useEffect, useMemo, useState } from "react";
+
+const M = [
+  {
+    "id": "m1",
+    "title": "Foundations of Claude Code",
+    "color": "#F59E0B",
+    "bg": "#78350F",
+    "minutes": 55,
+    "sections": [
+      {
+        "id": "m1s1",
+        "title": "Course Orientation: From Basic Tool Use to 8-Hour Workflow",
+        "minutes": 10,
+        "content": [
+          {
+            "t": "p",
+            "v": "This course turns Claude Code from a novelty into a repeatable engineering workflow. By the end, learners should be able to onboard a real repository, explore safely, plan changes, implement with tests, review the diff, automate common tasks, and publish the finished learning app to GitHub Pages."
+          },
+          {
+            "t": "h",
+            "v": "What this 8-hour version adds"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Timed lessons so the course can be delivered live or self-paced",
+              "Instructor talking points, live demos, labs, and checkpoints",
+              "Prompt packs students can copy into Claude Code",
+              "Troubleshooting branches for when Claude misunderstands the codebase",
+              "A capstone project where students create their own Claude Code workflow kit"
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Part",
+              "Time",
+              "Outcome"
+            ],
+            "r": [
+              [
+                "Foundations + setup",
+                "105 min",
+                "Students understand the agent loop, permissions, project prep, and first prompts"
+              ],
+              [
+                "Daily engineering workflow",
+                "200 min",
+                "Students can use Explore \u2192 Plan \u2192 Code \u2192 Verify \u2192 Commit on real tasks"
+              ],
+              [
+                "Automation + MCP + advanced features",
+                "145 min",
+                "Students can extend Claude Code with hooks, skills, subagents, MCP, SDK, and GitHub workflows"
+              ],
+              [
+                "Capstone + publishing",
+                "30 min",
+                "Students package what they built and deploy the course site to GitHub Pages"
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Delivery tip: do not lecture for eight straight hours. Alternate 10\u201315 minutes of explanation with a demo or hands-on task. Claude Code is learned by watching the loop and then practicing it."
+          }
+        ]
+      },
+      {
+        "id": "m1s2",
+        "title": "The Agent Mental Model",
+        "minutes": 12,
+        "content": [
+          {
+            "t": "p",
+            "v": "The most important shift is this: Claude Code is not an autocomplete engine and not just a chat box. It is an agentic coding environment that can inspect a codebase, choose tools, edit files, run commands, observe failures, and iterate. Your job changes from typing every line to supervising a capable junior engineer with terminal access."
+          },
+          {
+            "t": "h",
+            "v": "Three modes of AI help"
+          },
+          {
+            "t": "table",
+            "h": [
+              "Mode",
+              "What the AI does",
+              "Your responsibility"
+            ],
+            "r": [
+              [
+                "Autocomplete",
+                "Suggests the next line or block",
+                "Accept, reject, or edit immediately"
+              ],
+              [
+                "Chat assistant",
+                "Answers questions and writes snippets",
+                "Copy code manually, supply context manually"
+              ],
+              [
+                "Coding agent",
+                "Runs a loop across files, tools, tests, and fixes",
+                "Define task boundaries, inspect actions, approve risky steps, review output"
+              ]
+            ]
+          },
+          {
+            "t": "h",
+            "v": "Agent loop vocabulary"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Perceive: read files, errors, docs, tests, and previous conversation",
+              "Reason: decide the next smallest useful action",
+              "Act: call a tool such as Read, Write/Edit, Bash, search, MCP, or browser tools",
+              "Observe: inspect command output, test failure, file diff, or tool result",
+              "Iterate: continue until the goal is met or the task is blocked"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Good mental model prompt:\nYou are working as my coding agent, not just answering questions. First inspect the project, then explain what you learned, then propose the smallest safe next step. Do not edit files until I approve the plan."
+          },
+          {
+            "t": "note",
+            "v": "A good Claude Code user is not passive. You steer the loop, keep the scope small, and force verification before trusting the result."
+          }
+        ]
+      },
+      {
+        "id": "m1s3",
+        "title": "Claude Code Interface, Tools, and Visibility",
+        "minutes": 12,
+        "content": [
+          {
+            "t": "p",
+            "v": "Claude Code works best when students understand what they are seeing in the terminal. Tool calls are not magic; they are visible steps. This transparency is what lets you trust, interrupt, correct, or constrain the agent."
+          },
+          {
+            "t": "h",
+            "v": "Core tool categories"
+          },
+          {
+            "t": "table",
+            "h": [
+              "Tool category",
+              "Typical use",
+              "Risk level"
+            ],
+            "r": [
+              [
+                "File read/search",
+                "Understand architecture, find symbols, inspect tests",
+                "Low"
+              ],
+              [
+                "File write/edit",
+                "Implement changes, update docs, create tests",
+                "Medium"
+              ],
+              [
+                "Bash commands",
+                "Install dependencies, run tests, inspect Git state",
+                "Medium to high depending on command"
+              ],
+              [
+                "MCP/browser/API tools",
+                "Interact with external systems like GitHub, DBs, browsers",
+                "Variable; depends on credentials and permissions"
+              ]
+            ]
+          },
+          {
+            "t": "h",
+            "v": "Instructor demo"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Open a small repository with a failing test",
+              "Ask Claude to inspect the failure without changing files",
+              "Point out each read/search/bash action Claude proposes",
+              "Interrupt once and redirect it to a narrower file",
+              "Ask for a summary of evidence before any fix"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Demo prompt:\nThe tests are failing. Do not modify files yet. Inspect the test output and the relevant source files. Return: 1) suspected root cause, 2) exact files involved, 3) the smallest safe fix."
+          },
+          {
+            "t": "note",
+            "v": "Visibility is a teaching tool. Encourage learners to narrate what Claude is doing: reading, hypothesizing, editing, verifying, or recovering from a mistake."
+          }
+        ]
+      },
+      {
+        "id": "m1s4",
+        "title": "Permissions and Safety Mindset",
+        "minutes": 10,
+        "content": [
+          {
+            "t": "p",
+            "v": "Claude Code can be powerful enough to damage a project if given vague instructions and broad permissions. The solution is not fear; it is disciplined workflow. Keep Git clean, prefer planning before execution, review tool calls, and restrict dangerous operations."
+          },
+          {
+            "t": "h",
+            "v": "Safety layers"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Start from a clean Git working tree so every AI change is visible",
+              "Use planning-only mode for risky refactors or unfamiliar codebases",
+              "Ask Claude to explain commands before running destructive shell operations",
+              "Never allow blind edits in production config, secrets, migrations, or payment logic",
+              "Use hooks to block risky patterns such as rm -rf, force push, or direct database drops"
+            ]
+          },
+          {
+            "t": "table",
+            "h": [
+              "Risky area",
+              "Safer instruction"
+            ],
+            "r": [
+              [
+                "Database migrations",
+                "Generate the migration and a rollback plan; do not run it yet"
+              ],
+              [
+                "Secrets/config",
+                "Inspect references only; never print secret values"
+              ],
+              [
+                "Auth/payment code",
+                "Create a plan and test matrix before editing"
+              ],
+              [
+                "Large refactor",
+                "Work in small commits and verify after each phase"
+              ]
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Safety prompt:\nBefore making changes, identify the blast radius. List files that might be edited, tests that must pass, and any commands that could be destructive. Ask before running risky commands."
+          }
+        ]
+      },
+      {
+        "id": "m1s5",
+        "title": "Lab: Inspect a Project Without Editing",
+        "minutes": 11,
+        "content": [
+          {
+            "t": "p",
+            "v": "This first lab trains the habit that prevents most bad Claude Code sessions: explore before acting. Students should experience the difference between asking Claude to immediately fix something and asking it to build a trustworthy model first."
+          },
+          {
+            "t": "h",
+            "v": "Lab setup"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Choose any small project or starter Vite/Node repo",
+              "Open the repository root in terminal",
+              "Confirm Git status is clean",
+              "Launch Claude Code",
+              "Ask Claude to inspect only, not edit"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Lab prompt:\nExplore this repository without changing files. Read the README, package.json, main entry points, and tests. Then return a concise architecture map: purpose, tech stack, folder responsibilities, build/test commands, and two areas that need more investigation."
+          },
+          {
+            "t": "h",
+            "v": "Checkpoint questions"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Did Claude read the right files first?",
+              "Did it infer anything unsupported by evidence?",
+              "Can you explain the app architecture in your own words after Claude's summary?",
+              "What would you ask next before allowing edits?"
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Assessment: students pass this lab when they can produce a repository map and a safe next prompt without any code changes."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "m2",
+    "title": "Installation, Setup, and Project Onboarding",
+    "color": "#0284C7",
+    "bg": "#0C4A6E",
+    "minutes": 50,
+    "sections": [
+      {
+        "id": "m2s1",
+        "title": "Prerequisites and Installation",
+        "minutes": 10,
+        "content": [
+          {
+            "t": "p",
+            "v": "A smooth first install matters because learners who fight tooling lose trust before they reach the workflow. Confirm Node, npm, Git, and shell access first. Then install Claude Code and authenticate using the account or API path appropriate for your environment."
+          },
+          {
+            "t": "h",
+            "v": "Pre-flight checklist"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Node.js 18+ installed",
+              "Git installed and configured with user.name and user.email",
+              "A terminal learners are comfortable with",
+              "A disposable practice repository or branch",
+              "Access to Claude Code through a supported Claude plan or Anthropic API key"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "bash",
+            "v": "node --version\nnpm --version\ngit --version\nnpm install -g @anthropic-ai/claude-code\nclaude"
+          },
+          {
+            "t": "h",
+            "v": "Common install problems"
+          },
+          {
+            "t": "table",
+            "h": [
+              "Symptom",
+              "Likely cause",
+              "Fix"
+            ],
+            "r": [
+              [
+                "claude: command not found",
+                "Global npm bin not on PATH",
+                "Find npm bin path and add it to shell profile"
+              ],
+              [
+                "Permission denied during npm install",
+                "Global npm permission issue",
+                "Use a Node version manager or configure npm prefix"
+              ],
+              [
+                "Authentication loop",
+                "Browser/session mismatch",
+                "Sign out/in or authenticate from the same profile"
+              ]
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Do installation as a live demo only if the audience is small. For workshops, send the checklist before class and start with a verification command."
+          }
+        ]
+      },
+      {
+        "id": "m2s2",
+        "title": "Preparing a Repository for AI Work",
+        "minutes": 10,
+        "content": [
+          {
+            "t": "p",
+            "v": "Claude Code performs best when the repository is in a known state. Your baseline should make it obvious what the agent changed and easy to revert if the work goes wrong."
+          },
+          {
+            "t": "h",
+            "v": "Repository readiness checklist"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Pull latest main branch",
+              "Create a new feature branch",
+              "Run existing tests once manually",
+              "Commit or stash all local changes",
+              "Confirm package manager and lockfile are clear",
+              "Open Claude Code from the repository root, not a random subfolder"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "bash",
+            "v": "git checkout main\ngit pull\ngit checkout -b ai-workflow-lab\ngit status\nnpm test # or the project test command"
+          },
+          {
+            "t": "h",
+            "v": "Why this matters"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "A clean baseline makes AI diffs reviewable",
+              "A feature branch makes rollback safe",
+              "A known test state prevents blaming Claude for pre-existing failures",
+              "Running from the root helps Claude find README, package files, and config"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "m2s3",
+        "title": "First Run, /init, and CLAUDE.md",
+        "minutes": 12,
+        "content": [
+          {
+            "t": "p",
+            "v": "A strong project memory file turns repeated context-setting into a one-time investment. Claude Code can help initialize project memory, but you should treat the generated result as a draft that needs human editing."
+          },
+          {
+            "t": "h",
+            "v": "What CLAUDE.md should capture"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Project purpose and business domain",
+              "Tech stack, package manager, and versions",
+              "Build, test, lint, and deploy commands",
+              "Directory map and important entry points",
+              "Coding conventions and patterns to follow",
+              "Files or folders Claude should avoid",
+              "Security and data-handling rules"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "markdown",
+            "v": "# Project Guide for Claude Code\n\n## Commands\n- Install: npm install\n- Dev: npm run dev\n- Test: npm test\n- Build: npm run build\n\n## Rules\n- Do not edit generated files in /dist or /build.\n- Add or update tests when behavior changes.\n- Before committing, run tests and summarize the diff."
+          },
+          {
+            "t": "h",
+            "v": "Exercise"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Ask Claude to draft CLAUDE.md from the repository",
+              "Edit the file manually to add rules Claude cannot infer",
+              "Ask Claude to critique the file for missing instructions",
+              "Commit the improved CLAUDE.md"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "m2s4",
+        "title": "Settings, Permissions, and Team Defaults",
+        "minutes": 8,
+        "content": [
+          {
+            "t": "p",
+            "v": "Different projects need different levels of autonomy. A toy repo may be safe with auto-accept for reads and tests; a production repo needs stricter approval. Teach learners to choose a mode deliberately instead of copying a blanket setting."
+          },
+          {
+            "t": "table",
+            "h": [
+              "Setting decision",
+              "Conservative default",
+              "When to loosen it"
+            ],
+            "r": [
+              [
+                "File edits",
+                "Ask before edits",
+                "After plan is approved and branch is clean"
+              ],
+              [
+                "Bash commands",
+                "Ask for risky commands",
+                "Allow known safe commands like npm test"
+              ],
+              [
+                "External tools",
+                "Require explicit approval",
+                "When scoped MCP tools are read-only or sandboxed"
+              ],
+              [
+                "Commits",
+                "Ask before git add/commit",
+                "When commit message and diff are reviewed"
+              ]
+            ]
+          },
+          {
+            "t": "h",
+            "v": "Team policy prompt"
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Review our Claude Code usage policy for this repository. Suggest safe defaults for file edits, bash commands, tests, commits, and external tools. Format as a table with risk and recommendation."
+          },
+          {
+            "t": "note",
+            "v": "For teams, put defaults in documentation and enforce critical rules with hooks. Do not rely on every developer remembering the same safety habit."
+          }
+        ]
+      },
+      {
+        "id": "m2s5",
+        "title": "Lab: Create a Project Onboarding Prompt",
+        "minutes": 10,
+        "content": [
+          {
+            "t": "p",
+            "v": "In this lab, students write a reusable first prompt they can use at the start of any Claude Code session. The goal is to make exploration predictable and evidence-based."
+          },
+          {
+            "t": "h",
+            "v": "Prompt template"
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "You are onboarding to this repository. Do not edit files.\n\n1. Read README, package files, config, and main entry points.\n2. Identify build, test, lint, and dev commands.\n3. Create an architecture map with folder responsibilities.\n4. Identify risky areas: auth, payments, database, secrets, migrations.\n5. Return open questions before proposing any code changes."
+          },
+          {
+            "t": "h",
+            "v": "Deliverable"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "A saved prompt in docs/ai/onboarding-prompt.md or .claude/commands/onboard.md",
+              "A short explanation of when to use it",
+              "A checklist for evaluating Claude's first response"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "m3",
+    "title": "Daily Development Workflow",
+    "color": "#059669",
+    "bg": "#064E3B",
+    "minutes": 75,
+    "sections": [
+      {
+        "id": "m3s1",
+        "title": "Explore Phase: Evidence Before Edits",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "Explore phase is where Claude gathers evidence. You should ask it to read the code that proves how the system works, not just the files that sound relevant. A good explore prompt produces a map, assumptions, unknowns, and proposed next files to inspect."
+          },
+          {
+            "t": "h",
+            "v": "Explore outputs to demand"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Architecture summary in plain English",
+              "File list with why each file matters",
+              "Data flow or request flow for the feature area",
+              "Current tests and coverage gaps",
+              "Unknowns that should be resolved before editing",
+              "Risks and edge cases"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Explore how user authentication works. Do not change files. Trace the flow from request entry point to session/token validation and user lookup. Include file paths, key functions, tests, and any assumptions you cannot prove."
+          },
+          {
+            "t": "h",
+            "v": "Anti-patterns"
+          },
+          {
+            "t": "table",
+            "h": [
+              "Bad behavior",
+              "Correction"
+            ],
+            "r": [
+              [
+                "Claude reads only one obvious file",
+                "Ask it to trace callers, tests, and config"
+              ],
+              [
+                "Claude guesses architecture",
+                "Ask for file-path evidence for each claim"
+              ],
+              [
+                "Claude starts editing too early",
+                "Stop and request a written understanding first"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "m3s2",
+        "title": "Plan Phase: Convert Understanding into a Safe Change List",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "Plan phase is where you prevent wasted edits. A useful plan names files, explains changes, lists tests, calls out risks, and defines what will not be changed. The plan should be small enough to review before implementation."
+          },
+          {
+            "t": "h",
+            "v": "A high-quality plan contains"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Goal restated in one sentence",
+              "Files to edit and why",
+              "Files to read but not edit",
+              "Data model or API changes, if any",
+              "Test plan with specific commands",
+              "Rollback plan",
+              "Open questions or assumptions"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Based on your exploration, create an implementation plan. Do not edit files. Include: files to modify, exact behavior changes, tests to add/update, commands to run, risks, and rollback steps. Keep the first implementation slice under 60 minutes."
+          },
+          {
+            "t": "note",
+            "v": "If the plan touches too many files, ask Claude to split it into phases. The first phase should usually prove the approach with one vertical slice."
+          }
+        ]
+      },
+      {
+        "id": "m3s3",
+        "title": "Code Phase: Small Iterations, Not Big Bang Edits",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "When coding starts, resist the temptation to ask for everything at once. Small edits plus immediate verification make it easy to identify which change introduced a failure. Claude is good at iteration, so structure the task to exploit that strength."
+          },
+          {
+            "t": "h",
+            "v": "Implementation rules"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Implement one logical slice at a time",
+              "Run the narrowest relevant test first",
+              "Do not change test expectations just to make failures disappear",
+              "Ask Claude to explain each failed test before fixing it",
+              "Review the diff after each meaningful step"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Implement phase 1 only. After editing, run the most relevant test file first. If tests fail, explain the failure before attempting a fix. Do not modify unrelated files."
+          },
+          {
+            "t": "h",
+            "v": "Troubleshooting branch"
+          },
+          {
+            "t": "table",
+            "h": [
+              "If Claude...",
+              "Say..."
+            ],
+            "r": [
+              [
+                "Edits unrelated files",
+                "Revert unrelated changes and explain why they were touched"
+              ],
+              [
+                "Changes tests incorrectly",
+                "Restore original expectations and fix implementation"
+              ],
+              [
+                "Runs broad commands too early",
+                "Run the narrow test first, then broaden verification"
+              ],
+              [
+                "Loops on the same error",
+                "Stop, summarize attempts, and propose a new hypothesis"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "m3s4",
+        "title": "Verify Phase: Tests, Lint, Build, and Manual Checks",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "Verification is not optional. A Claude Code session is incomplete until the change is tested at the right levels and the final state is explainable. Teach students to combine automated checks with targeted manual inspection."
+          },
+          {
+            "t": "h",
+            "v": "Verification ladder"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Run the narrow test connected to the change",
+              "Run the broader package/module test suite",
+              "Run lint/typecheck if available",
+              "Run the build command",
+              "Inspect Git diff manually",
+              "For UI changes, run the app and compare screenshots"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Run the verification ladder for this change. Use the narrowest relevant tests first, then lint/typecheck/build. If any step fails, stop and explain the failure with file-path evidence before fixing."
+          },
+          {
+            "t": "h",
+            "v": "Final verification report format"
+          },
+          {
+            "t": "code",
+            "lang": "markdown",
+            "v": "## Verification Report\n- Changed files:\n- Tests run:\n- Passing checks:\n- Failing or skipped checks:\n- Manual checks performed:\n- Remaining risks:"
+          }
+        ]
+      },
+      {
+        "id": "m3s5",
+        "title": "Commit and PR Handoff",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "The commit phase turns a successful session into maintainable team work. Claude can summarize diffs, draft commit messages, and generate PR descriptions, but you should verify the final diff and make sure the story is accurate."
+          },
+          {
+            "t": "h",
+            "v": "Commit checklist"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Git diff reviewed by human",
+              "No secrets or generated junk committed",
+              "Tests and build status captured",
+              "Commit message explains intent, not just file changes",
+              "PR description includes validation and risks"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Review the final git diff and create a PR-ready summary. Include: problem, solution, changed files, screenshots if UI changed, tests run, risks, and follow-up work. Then propose a Conventional Commit message."
+          },
+          {
+            "t": "table",
+            "h": [
+              "Commit type",
+              "Use for"
+            ],
+            "r": [
+              [
+                "feat",
+                "New user-visible behavior"
+              ],
+              [
+                "fix",
+                "Bug fix"
+              ],
+              [
+                "refactor",
+                "Internal change without behavior change"
+              ],
+              [
+                "test",
+                "Test-only changes"
+              ],
+              [
+                "docs",
+                "Documentation/course content changes"
+              ],
+              [
+                "chore",
+                "Tooling or maintenance"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "m4",
+    "title": "Context, Memory, Commands, and Course Assets",
+    "color": "#7C3AED",
+    "bg": "#3B0764",
+    "minutes": 60,
+    "sections": [
+      {
+        "id": "m4s1",
+        "title": "Context Window: What Claude Can and Cannot Remember",
+        "minutes": 12,
+        "content": [
+          {
+            "t": "p",
+            "v": "The context window is Claude's active working set. It includes messages, file contents, command outputs, and summaries. When it fills, older details may be compressed or dropped. Good users deliberately manage context like they manage RAM during a long-running process."
+          },
+          {
+            "t": "h",
+            "v": "Context pressure sources"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Large files pasted or read unnecessarily",
+              "Long command outputs and logs",
+              "Repeated failed attempts without summarization",
+              "Multiple unrelated tasks in one session",
+              "Generated files, lockfiles, or minified bundles"
+            ]
+          },
+          {
+            "t": "h",
+            "v": "Context hygiene rules"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Start a fresh session for unrelated work",
+              "Ask for compact summaries at task boundaries",
+              "Avoid loading giant files unless needed",
+              "Keep plans and decisions explicit",
+              "Use persistent project memory for stable facts"
+            ]
+          },
+          {
+            "t": "note",
+            "v": "The better your context hygiene, the more reliable Claude becomes late in the session. Many 'model got worse' moments are actually context-management failures."
+          }
+        ]
+      },
+      {
+        "id": "m4s2",
+        "title": "/compact, /clear, and /context Workflows",
+        "minutes": 12,
+        "content": [
+          {
+            "t": "p",
+            "v": "Context commands are maintenance controls. Teach them before learners hit problems, not after. A proactive compact after a completed phase is much cleaner than trying to recover from a confused agent."
+          },
+          {
+            "t": "table",
+            "h": [
+              "Command",
+              "Use when",
+              "Before running it"
+            ],
+            "r": [
+              [
+                "/context",
+                "Claude seems confused or you want to inspect loaded context",
+                "Ask what key files and decisions are currently in context"
+              ],
+              [
+                "/compact",
+                "The task is long but still related",
+                "Ask Claude to produce a phase summary first"
+              ],
+              [
+                "/clear",
+                "You are starting unrelated work",
+                "Save important decisions to CLAUDE.md or notes first"
+              ]
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Before we compact, summarize the current task state: goal, decisions made, files changed, tests run, unresolved risks, and exact next step. Then I will run /compact."
+          },
+          {
+            "t": "h",
+            "v": "Mini-lab"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Complete one small code change",
+              "Ask Claude to summarize the session state",
+              "Run /compact",
+              "Ask Claude to continue from the summary",
+              "Compare whether it preserved the right details"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "m4s3",
+        "title": "Writing a High-ROI CLAUDE.md",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "CLAUDE.md is the course's highest-leverage deliverable. It gives Claude durable project context and reduces repeated prompting. A weak CLAUDE.md is a vague README clone; a strong one is an operating manual for safe AI work in the repo."
+          },
+          {
+            "t": "h",
+            "v": "Recommended structure"
+          },
+          {
+            "t": "code",
+            "lang": "markdown",
+            "v": "# Claude Code Operating Guide\n\n## Project Purpose\n[What this app does and who uses it]\n\n## Architecture\n[Main folders, entry points, important flows]\n\n## Commands\n- Dev:\n- Test:\n- Lint:\n- Typecheck:\n- Build:\n\n## Coding Standards\n[Patterns to follow and avoid]\n\n## Safety Rules\n[Never edit secrets/generated files/legacy areas]\n\n## Workflow Rules\nExplore before edits. Plan before risky changes. Verify before commit."
+          },
+          {
+            "t": "h",
+            "v": "Review prompt"
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Review this CLAUDE.md as if you are a senior engineer. Find missing commands, ambiguous rules, outdated assumptions, and instructions that could cause bad AI behavior. Suggest precise improvements."
+          },
+          {
+            "t": "note",
+            "v": "Keep CLAUDE.md short enough to stay useful. Put long examples in linked docs or skills so the always-loaded memory does not become noisy."
+          }
+        ]
+      },
+      {
+        "id": "m4s4",
+        "title": "Custom Slash Commands",
+        "minutes": 10,
+        "content": [
+          {
+            "t": "p",
+            "v": "Custom commands turn high-quality prompts into reusable workflows. They are especially useful for repeated tasks like review, deploy checks, PR descriptions, onboarding, and test generation."
+          },
+          {
+            "t": "h",
+            "v": "Examples to build in class"
+          },
+          {
+            "t": "table",
+            "h": [
+              "Command",
+              "Purpose",
+              "Suggested file"
+            ],
+            "r": [
+              [
+                "/onboard",
+                "Explore repository and return architecture map",
+                ".claude/commands/onboard.md"
+              ],
+              [
+                "/review-diff",
+                "Review current Git diff with severity labels",
+                ".claude/commands/review-diff.md"
+              ],
+              [
+                "/pr-desc",
+                "Generate PR description from commits/diff",
+                ".claude/commands/pr-desc.md"
+              ],
+              [
+                "/verify",
+                "Run verification ladder and report status",
+                ".claude/commands/verify.md"
+              ]
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "markdown",
+            "v": "# .claude/commands/review-diff.md\nReview the current git diff. Focus on correctness, security, performance, test coverage, and maintainability. Return findings as:\n- [HIGH/MED/LOW] file:line \u2014 issue \u2014 recommended fix\nAlso list positives and missing tests."
+          }
+        ]
+      },
+      {
+        "id": "m4s5",
+        "title": "Lab: Build Your Team's AI Workflow Kit",
+        "minutes": 11,
+        "content": [
+          {
+            "t": "p",
+            "v": "Students now create project assets they can commit to a real repo. This turns the course from notes into infrastructure."
+          },
+          {
+            "t": "h",
+            "v": "Deliverables"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "A CLAUDE.md file tailored to the repository",
+              "At least two custom commands",
+              "A docs/ai/workflow.md file explaining when to use Explore, Plan, Code, Verify, Commit",
+              "A verification checklist copied into the repo",
+              "A short README section telling teammates how to use the AI workflow"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Create a complete AI workflow kit for this repository. Draft CLAUDE.md, .claude/commands/onboard.md, .claude/commands/review-diff.md, and docs/ai/workflow.md. Do not commit yet. Show me the proposed file contents first."
+          },
+          {
+            "t": "note",
+            "v": "Assessment: the kit should be specific enough that another developer could start Claude Code in the repo and follow the same workflow."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "m5",
+    "title": "Debugging, Testing, Review, and Refactoring",
+    "color": "#BE185D",
+    "bg": "#500724",
+    "minutes": 65,
+    "sections": [
+      {
+        "id": "m5s1",
+        "title": "Debugging with Claude Code",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "Debugging is where Claude Code becomes visibly useful. The agent can read stack traces, trace call paths, inspect tests, add temporary diagnostics, run commands, and revise hypotheses. The key is forcing it to reason from evidence instead of guessing."
+          },
+          {
+            "t": "h",
+            "v": "Debugging loop"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Capture the exact failure output",
+              "Ask Claude to identify likely files and hypotheses",
+              "Inspect the relevant code path",
+              "Add the smallest diagnostic or test if needed",
+              "Fix the root cause, not the symptom",
+              "Remove diagnostics and verify"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Debug this failing test. Do not edit yet. Read the failure output, trace the code path, list three possible root causes ranked by evidence, and identify the next file or test to inspect."
+          },
+          {
+            "t": "h",
+            "v": "Evidence grading"
+          },
+          {
+            "t": "table",
+            "h": [
+              "Claim type",
+              "Accept only if"
+            ],
+            "r": [
+              [
+                "This function is wrong",
+                "Claude cites the file and line/function behavior"
+              ],
+              [
+                "This test is outdated",
+                "Claude shows product behavior or docs proving it"
+              ],
+              [
+                "Dependency issue",
+                "Claude checks versions, lockfile, or changelog"
+              ],
+              [
+                "Race condition",
+                "Claude explains timing path and reproduction"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "m5s2",
+        "title": "Test Generation Without Fake Confidence",
+        "minutes": 12,
+        "content": [
+          {
+            "t": "p",
+            "v": "Claude can write many tests quickly, but quantity is not quality. Teach students to ask for a test strategy first, then targeted tests that protect behavior and edge cases. Avoid tests that merely mirror implementation details."
+          },
+          {
+            "t": "h",
+            "v": "Good test prompts"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Ask for a test matrix before writing test code",
+              "Prioritize behavior, edge cases, and regressions",
+              "Use characterization tests before refactoring legacy code",
+              "Ask Claude to run tests and explain failures",
+              "Review generated tests for brittle mocks and low-value assertions"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Before writing tests, create a test matrix for this feature. Include happy path, edge cases, error states, permissions, and regression cases. Mark each as unit, integration, or manual. Then write only the top three highest-value automated tests."
+          },
+          {
+            "t": "note",
+            "v": "If Claude writes tests that only verify mocked implementation calls, push it toward user-visible behavior and contract-level expectations."
+          }
+        ]
+      },
+      {
+        "id": "m5s3",
+        "title": "Code Review: Security, Performance, and Maintainability",
+        "minutes": 14,
+        "content": [
+          {
+            "t": "p",
+            "v": "Claude Code is useful as a first-pass reviewer because it can trace across files and produce structured findings. It should not replace human review, but it can remove obvious issues before human reviewers spend attention."
+          },
+          {
+            "t": "h",
+            "v": "Review dimensions"
+          },
+          {
+            "t": "table",
+            "h": [
+              "Dimension",
+              "Questions to ask"
+            ],
+            "r": [
+              [
+                "Correctness",
+                "Does the code implement the requested behavior? Are edge cases handled?"
+              ],
+              [
+                "Security",
+                "Could input reach a dangerous sink? Are auth/authorization checks complete?"
+              ],
+              [
+                "Performance",
+                "Any N+1 queries, expensive loops, repeated renders, unnecessary network calls?"
+              ],
+              [
+                "Maintainability",
+                "Is the change small, readable, idiomatic, and well-tested?"
+              ],
+              [
+                "Operations",
+                "Could this break deployment, logging, observability, or rollback?"
+              ]
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Review the current git diff. Output only actionable findings in this format:\n- [HIGH/MED/LOW] file:line \u2014 issue \u2014 why it matters \u2014 recommended fix\nThen list missing tests and any parts of the diff you consider safe."
+          },
+          {
+            "t": "h",
+            "v": "Class exercise"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Generate a review with Claude",
+              "Have students independently inspect one finding",
+              "Decide whether it is valid, false positive, or needs more evidence",
+              "Rewrite the prompt to reduce false positives"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "m5s4",
+        "title": "Refactoring Safely",
+        "minutes": 12,
+        "content": [
+          {
+            "t": "p",
+            "v": "Refactoring is risky because many files can change while behavior should remain the same. Claude needs stronger boundaries here: no behavior changes unless explicitly requested, tests before and after, and small phases."
+          },
+          {
+            "t": "h",
+            "v": "Refactor safety recipe"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Capture current behavior with tests or snapshots",
+              "Ask Claude to identify seams and dependencies",
+              "Plan small mechanical steps",
+              "Run tests after each step",
+              "Keep behavior-changing improvements separate from pure refactors",
+              "Commit each phase separately if large"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Plan a behavior-preserving refactor of this module. Do not edit. Identify current public behavior, tests that protect it, exact mechanical steps, and how we will verify no behavior changed."
+          },
+          {
+            "t": "note",
+            "v": "Never combine a big refactor with a feature unless there is a compelling reason. Claude can do both, but reviewers will hate the diff."
+          }
+        ]
+      },
+      {
+        "id": "m5s5",
+        "title": "UI Workflows with Screenshots and Visual Feedback",
+        "minutes": 12,
+        "content": [
+          {
+            "t": "p",
+            "v": "For UI changes, screenshots reduce ambiguity. Claude can reason about layout from visual input, but you still need concrete acceptance criteria: spacing, responsive behavior, states, and before/after comparison."
+          },
+          {
+            "t": "h",
+            "v": "Visual workflow"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Run the app locally",
+              "Capture current UI screenshot",
+              "Describe target change with exact acceptance criteria",
+              "Ask Claude to identify likely components/styles before editing",
+              "Apply change, rebuild, and inspect after screenshot",
+              "Iterate with specific visual corrections"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Use this screenshot as the current UI. Make the course cards easier to scan on mobile. Before editing, identify the likely React components and CSS involved. After editing, run the app and tell me what to verify visually."
+          },
+          {
+            "t": "h",
+            "v": "Acceptance criteria examples"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Sidebar collapses cleanly below 800px",
+              "Lesson cards have at least 16px spacing",
+              "Progress bar remains visible after search",
+              "Code blocks wrap on small screens",
+              "Keyboard navigation still works"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "m6",
+    "title": "MCP Fundamentals and Building Servers",
+    "color": "#DC2626",
+    "bg": "#450A0A",
+    "minutes": 70,
+    "sections": [
+      {
+        "id": "m6s1",
+        "title": "Why MCP Exists",
+        "minutes": 12,
+        "content": [
+          {
+            "t": "p",
+            "v": "The Model Context Protocol solves the integration problem for AI apps. Instead of every AI client writing a custom integration for every tool, MCP provides a standard way for clients to discover and use external capabilities such as tools, resources, prompts, data stores, and services."
+          },
+          {
+            "t": "h",
+            "v": "Architecture in plain English"
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "User asks a task\n  \u2193\nMCP-capable client such as Claude Code\n  \u2193 JSON-RPC over stdio or Streamable HTTP\nMCP server exposing tools/resources/prompts\n  \u2193\nExternal system: file system, database, GitHub, browser, internal API"
+          },
+          {
+            "t": "h",
+            "v": "When MCP is worth it"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "The tool will be reused across many projects or users",
+              "The AI needs structured access to an external system",
+              "You need safer, narrower access than full shell commands",
+              "You want discoverable tool descriptions and schemas",
+              "You want one integration usable by multiple MCP-compatible clients"
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Do not build an MCP server for every script. Start with a normal script or custom command; move to MCP when discoverability, permissions, reuse, or external integration matter."
+          }
+        ]
+      },
+      {
+        "id": "m6s2",
+        "title": "Tools, Resources, and Prompts",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "MCP servers expose three main primitives. Understanding the difference prevents poor server design. A tool does work, a resource exposes read-only context, and a prompt provides a reusable user-invoked workflow."
+          },
+          {
+            "t": "table",
+            "h": [
+              "Primitive",
+              "Controlled by",
+              "Good for",
+              "Example"
+            ],
+            "r": [
+              [
+                "Tool",
+                "Model decides when to call",
+                "Actions, queries, computations, writes with permission",
+                "search_issues(query), run_report(date)"
+              ],
+              [
+                "Resource",
+                "Client/app decides what to expose",
+                "Read-only data or context",
+                "repo://README, db-schema://public"
+              ],
+              [
+                "Prompt",
+                "User explicitly invokes",
+                "Reusable instruction templates",
+                "review-security, summarize-release"
+              ]
+            ]
+          },
+          {
+            "t": "h",
+            "v": "Design exercise"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "List a workflow your team repeats often",
+              "Identify which parts are actions, context, or templates",
+              "Decide which pieces should become tools, resources, or prompts",
+              "Write names and descriptions that a model can understand"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Classify these capabilities as tool, resource, or prompt:\n1. Read current sprint tickets\n2. Create a GitHub issue\n3. Review this diff using our security checklist\n4. Expose API schema\n5. Calculate deployment risk score"
+          }
+        ]
+      },
+      {
+        "id": "m6s3",
+        "title": "Build a Minimal Python MCP Server",
+        "minutes": 18,
+        "content": [
+          {
+            "t": "p",
+            "v": "A minimal server is enough to teach the protocol shape: define a server, expose a tool, run it over stdio, then inspect it. Keep the first server safe and local, such as reading a whitelisted docs directory or formatting a small text input."
+          },
+          {
+            "t": "h",
+            "v": "Example server"
+          },
+          {
+            "t": "code",
+            "lang": "python",
+            "v": "from mcp.server.fastmcp import FastMCP\nfrom pathlib import Path\n\nmcp = FastMCP('course-tools')\nDOCS_ROOT = Path('docs').resolve()\n\n@mcp.tool()\ndef list_course_docs() -> list[str]:\n    '''List available course documents.'''\n    if not DOCS_ROOT.exists():\n        return []\n    return [p.name for p in DOCS_ROOT.glob('*.md')]\n\n@mcp.tool()\ndef read_course_doc(filename: str) -> str:\n    '''Read a markdown course document by filename.'''\n    path = (DOCS_ROOT / filename).resolve()\n    if not str(path).startswith(str(DOCS_ROOT)):\n        raise ValueError('Path outside docs directory')\n    return path.read_text()\n\nif __name__ == '__main__':\n    mcp.run()"
+          },
+          {
+            "t": "h",
+            "v": "Security discussion"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Whitelist directories instead of accepting arbitrary paths",
+              "Validate inputs even when the model is calling the tool",
+              "Prefer read-only tools first",
+              "Return concise structured results instead of huge raw files",
+              "Log tool calls during development"
+            ]
+          },
+          {
+            "t": "note",
+            "v": "The path check is intentionally included in the teaching example. MCP does not remove the need for normal application security."
+          }
+        ]
+      },
+      {
+        "id": "m6s4",
+        "title": "Inspector and Debugging MCP Servers",
+        "minutes": 10,
+        "content": [
+          {
+            "t": "p",
+            "v": "The MCP Inspector lets you test server capabilities before connecting them to Claude Code. This shortens debugging because you can isolate whether a problem is in the server, the transport, the schema, or the client prompt."
+          },
+          {
+            "t": "h",
+            "v": "Debug checklist"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Run the server in inspector/dev mode",
+              "Confirm tools/resources/prompts appear with clear descriptions",
+              "Call each tool with valid and invalid inputs",
+              "Check error messages are helpful but not leaking secrets",
+              "Only then connect the server to Claude Code"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "bash",
+            "v": "mcp dev server.py\n# Open the inspector, call each tool, and inspect raw request/response"
+          },
+          {
+            "t": "table",
+            "h": [
+              "Problem",
+              "Likely cause"
+            ],
+            "r": [
+              [
+                "Tool not listed",
+                "Decorator not registered or server not restarted"
+              ],
+              [
+                "Bad parameter schema",
+                "Missing type hints or invalid defaults"
+              ],
+              [
+                "Server hangs",
+                "Long operation without timeout/progress"
+              ],
+              [
+                "Claude misuses tool",
+                "Tool name/description too vague"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "m6s5",
+        "title": "Client Integration Flow",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "A client connects to the MCP server, discovers capabilities, passes tool definitions to the model, executes model-requested tool calls, and returns results. Students do not need to memorize the protocol immediately; they need to understand the flow so they can debug integrations."
+          },
+          {
+            "t": "h",
+            "v": "Integration pattern"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Start server transport",
+              "Initialize session",
+              "List tools/resources/prompts",
+              "Send user request plus available tools to model",
+              "Model requests a tool call",
+              "Client calls MCP server",
+              "Client returns tool result to model",
+              "Model continues or finalizes answer"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "python",
+            "v": "# Pseudocode for teaching the flow\nasync with connect_to_mcp_server() as session:\n    tools = await session.list_tools()\n    response = await model_call(user_message, tools=tools)\n    if response.requests_tool:\n        result = await session.call_tool(response.tool_name, response.args)\n        final = await model_call_with_tool_result(result)"
+          },
+          {
+            "t": "note",
+            "v": "In production, add auth, input validation, timeout handling, logging, and clear user approval boundaries for tools that mutate data."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "m7",
+    "title": "Automation: Hooks, Skills, Subagents, SDK, and GitHub",
+    "color": "#0891B2",
+    "bg": "#164E63",
+    "minutes": 75,
+    "sections": [
+      {
+        "id": "m7s1",
+        "title": "Hooks: Deterministic Guardrails Around the Agent",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "Hooks run at defined points in Claude Code's lifecycle. They are deterministic guardrails around probabilistic agent behavior. Use them for formatting, blocking dangerous commands, logging, notifications, and enforcing team standards."
+          },
+          {
+            "t": "h",
+            "v": "Hook design rules"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Keep hooks fast; slow hooks make every tool call feel broken",
+              "Make blocking hooks precise to avoid false positives",
+              "Test hook scripts manually before wiring them to Claude Code",
+              "Log enough context for audits without leaking secrets",
+              "Use hooks for policy, not for complex reasoning"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "json",
+            "v": "{\n  \"hooks\": {\n    \"pre-tool-call\": [\n      {\n        \"matcher\": { \"tool\": \"Bash\", \"contains\": \"rm -rf\" },\n        \"command\": \"echo 'Blocked dangerous command' && exit 1\"\n      }\n    ],\n    \"post-tool-call\": [\n      {\n        \"matcher\": { \"tool\": \"Write\" },\n        \"command\": \"npm run format --if-present\"\n      }\n    ]\n  }\n}"
+          },
+          {
+            "t": "note",
+            "v": "Hooks are best for non-negotiable rules. If a rule needs judgment, make it a review command or subagent instead."
+          }
+        ]
+      },
+      {
+        "id": "m7s2",
+        "title": "Skills: Reusable Task-Specific Instruction Packs",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "Skills are reusable instruction packages that load when relevant. They keep the always-loaded project memory small while giving Claude specialized workflows for tasks such as PDF handling, database migrations, PR review, release notes, or incident response."
+          },
+          {
+            "t": "h",
+            "v": "Skill anatomy"
+          },
+          {
+            "t": "code",
+            "lang": "markdown",
+            "v": "---\nname: release-notes\ndescription: Use when creating release notes, changelogs, or summaries from commits and PRs.\nallowed-tools: Read, Bash\n---\n\n# Release Notes Skill\n\n1. Inspect commits and merged PRs.\n2. Group changes by user impact.\n3. Separate breaking changes, bug fixes, and internal changes.\n4. Mention verification status.\n5. Output in a format suitable for GitHub Releases."
+          },
+          {
+            "t": "h",
+            "v": "When to create a skill"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "The workflow repeats across projects",
+              "The instructions are too long for CLAUDE.md",
+              "The task needs specialized examples or helper scripts",
+              "The task should trigger automatically from a good description",
+              "The team wants a shared standard"
+            ]
+          },
+          {
+            "t": "note",
+            "v": "Write skill descriptions like matching rules. Include synonyms and task verbs so Claude knows when the skill applies."
+          }
+        ]
+      },
+      {
+        "id": "m7s3",
+        "title": "Subagents: Specialized Workers with Clean Context",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "Subagents are useful when a task is bounded, independent, and would otherwise pollute the main context. They can review, research, document, test, or inspect in isolation and return a structured result."
+          },
+          {
+            "t": "h",
+            "v": "Good subagent tasks"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Review this diff for security issues",
+              "Inspect this module and summarize architecture",
+              "Generate documentation for this package",
+              "Analyze flaky tests and report likely causes",
+              "Compare two implementation options"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "markdown",
+            "v": "---\nname: security-reviewer\ndescription: Use to review code for security vulnerabilities, auth bypasses, injection, unsafe secrets handling, and access-control gaps.\ntools: Read, Bash\n---\n\nYou are a security-focused code reviewer. Return exactly:\n## Summary\n## Findings\n- [HIGH/MED/LOW] file:line \u2014 issue \u2014 exploit scenario \u2014 fix\n## Missing Tests\n## Confidence and Limits"
+          },
+          {
+            "t": "h",
+            "v": "Anti-patterns"
+          },
+          {
+            "t": "table",
+            "h": [
+              "Anti-pattern",
+              "Better approach"
+            ],
+            "r": [
+              [
+                "Subagent for tiny edits",
+                "Use main session"
+              ],
+              [
+                "Subagent needs lots of conversation history",
+                "Keep task in main session"
+              ],
+              [
+                "No output format",
+                "Define strict report structure"
+              ],
+              [
+                "Broad write permissions",
+                "Grant only tools needed"
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "id": "m7s4",
+        "title": "Agent SDK and Scripted Workflows",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "The Agent SDK lets teams run agentic workflows programmatically instead of only through the interactive terminal. Use it for scripted maintenance, CI checks, batch transformations, or internal tools that need controlled AI-assisted coding behavior."
+          },
+          {
+            "t": "h",
+            "v": "Use cases"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Nightly dependency update analysis",
+              "Batch documentation refresh",
+              "Automated codebase health reports",
+              "CI-side review suggestions",
+              "Internal web UI for non-terminal users"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "typescript",
+            "v": "// Conceptual example: stream an agent task\nimport { query } from '@anthropic-ai/claude-code';\n\nfor await (const message of query({\n  prompt: 'Review the current repository for missing tests. Return a prioritized report.',\n  options: { maxTurns: 10 }\n})) {\n  console.log(message);\n}"
+          },
+          {
+            "t": "h",
+            "v": "Production considerations"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Run in isolated workspaces",
+              "Limit credentials and file access",
+              "Capture logs and diffs as artifacts",
+              "Require human approval before writing to protected branches",
+              "Set budgets, timeouts, and max turns"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "m7s5",
+        "title": "GitHub Automation with Claude Code",
+        "minutes": 15,
+        "content": [
+          {
+            "t": "p",
+            "v": "GitHub integration is where Claude Code moves from local helper to team automation. You can use it to summarize issues, draft PR descriptions, review changes, or respond to mentions in issues and pull requests depending on your setup."
+          },
+          {
+            "t": "h",
+            "v": "Practical workflows"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Ask Claude to generate a PR description from the current branch diff",
+              "Use a review command before opening a PR",
+              "Add a GitHub Action that runs a static site deployment on every push",
+              "Use Claude Code GitHub workflows for issue/PR assistance where your organization allows it"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "PR prompt:\nRead the current branch diff and generate a PR description with: context, implementation summary, screenshots needed, tests run, deployment risk, rollback plan, and reviewer checklist."
+          },
+          {
+            "t": "h",
+            "v": "Team guardrails"
+          },
+          {
+            "t": "table",
+            "h": [
+              "Area",
+              "Guardrail"
+            ],
+            "r": [
+              [
+                "Secrets",
+                "Do not expose repository or environment secrets to generated logs"
+              ],
+              [
+                "Permissions",
+                "Use least-privilege GitHub tokens"
+              ],
+              [
+                "Reviews",
+                "Treat AI review as first-pass, not final approval"
+              ],
+              [
+                "Deployment",
+                "Use GitHub Pages/Actions with explicit build outputs"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "m8",
+    "title": "Capstone and GitHub Pages Publishing",
+    "color": "#A3E635",
+    "bg": "#365314",
+    "minutes": 30,
+    "sections": [
+      {
+        "id": "m8s1",
+        "title": "Capstone Brief",
+        "minutes": 6,
+        "content": [
+          {
+            "t": "p",
+            "v": "The capstone makes the course concrete. Students will package their own Claude Code workflow assets, improve this course app, and publish it through GitHub Pages. The outcome is a shareable site and a reusable AI workflow kit."
+          },
+          {
+            "t": "h",
+            "v": "Capstone deliverables"
+          },
+          {
+            "t": "ul",
+            "v": [
+              "Expanded React course app deployed publicly",
+              "CLAUDE.md customized for the app repository",
+              "At least two custom commands",
+              "A GitHub Pages deployment workflow",
+              "A final README explaining how to run, edit, and deploy the course"
+            ]
+          },
+          {
+            "t": "note",
+            "v": "This is intentionally small. The goal is to practice the complete loop, not build a huge product."
+          }
+        ]
+      },
+      {
+        "id": "m8s2",
+        "title": "Prepare the Vite Project for GitHub",
+        "minutes": 6,
+        "content": [
+          {
+            "t": "p",
+            "v": "GitHub Pages can host the built static files from a Vite React app. The project needs a package file, Vite config, source files, and a GitHub Actions workflow that builds and deploys the dist directory."
+          },
+          {
+            "t": "h",
+            "v": "Expected project structure"
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "claude-code-8-hour-course/\n  index.html\n  package.json\n  vite.config.js\n  src/\n    main.jsx\n    App.jsx\n  .github/workflows/deploy.yml\n  README.md"
+          },
+          {
+            "t": "code",
+            "lang": "bash",
+            "v": "npm install\nnpm run dev\nnpm run build\nnpm run preview"
+          },
+          {
+            "t": "note",
+            "v": "For a repository deployed at https://USERNAME.github.io/REPO/, Vite needs the correct base path. The included config calculates it from GITHUB_REPOSITORY during GitHub Actions builds."
+          }
+        ]
+      },
+      {
+        "id": "m8s3",
+        "title": "Deploy with GitHub Pages",
+        "minutes": 6,
+        "content": [
+          {
+            "t": "p",
+            "v": "GitHub Pages deployment is mostly configuration: push the repo, enable Pages with GitHub Actions as the source, and let the workflow build the site. The generated link appears in the deployment output."
+          },
+          {
+            "t": "h",
+            "v": "Deployment steps"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Create a new GitHub repository",
+              "Push the Vite project to main",
+              "Go to Settings \u2192 Pages",
+              "Set Build and deployment source to GitHub Actions",
+              "Push again or run the workflow manually",
+              "Open the Pages URL after deployment finishes"
+            ]
+          },
+          {
+            "t": "code",
+            "lang": "bash",
+            "v": "git init\ngit add .\ngit commit -m \"docs: add expanded Claude Code course\"\ngit branch -M main\ngit remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git\ngit push -u origin main"
+          },
+          {
+            "t": "note",
+            "v": "If the page is blank after deployment, check the Vite base path, browser console, and Actions build logs first."
+          }
+        ]
+      },
+      {
+        "id": "m8s4",
+        "title": "Final Rubric",
+        "minutes": 6,
+        "content": [
+          {
+            "t": "p",
+            "v": "Use this rubric to assess whether students truly learned the workflow, not just clicked through the notes."
+          },
+          {
+            "t": "table",
+            "h": [
+              "Skill",
+              "Meets expectation"
+            ],
+            "r": [
+              [
+                "Explore",
+                "Can map a repo with evidence before edits"
+              ],
+              [
+                "Plan",
+                "Can produce a safe, reviewable implementation plan"
+              ],
+              [
+                "Code",
+                "Can supervise small agentic edits and stop scope creep"
+              ],
+              [
+                "Verify",
+                "Runs and reports relevant checks"
+              ],
+              [
+                "Customize",
+                "Creates useful CLAUDE.md and commands"
+              ],
+              [
+                "Automate",
+                "Can explain where hooks, skills, subagents, MCP, and GitHub fit"
+              ],
+              [
+                "Publish",
+                "Deploys the course app to GitHub Pages"
+              ]
+            ]
+          },
+          {
+            "t": "h",
+            "v": "Final reflection prompt"
+          },
+          {
+            "t": "code",
+            "lang": "text",
+            "v": "Reflect on your Claude Code workflow. What will you allow Claude to do autonomously? What will always require review? What team standards should be encoded in CLAUDE.md, commands, hooks, or skills?"
+          }
+        ]
+      },
+      {
+        "id": "m8s5",
+        "title": "Next Steps After the Course",
+        "minutes": 6,
+        "content": [
+          {
+            "t": "p",
+            "v": "After the workshop, the best next step is to apply the workflow to a real but low-risk task. Pick a documentation improvement, a missing test, a small bug, or a UI polish task. Avoid starting with a production-critical refactor."
+          },
+          {
+            "t": "h",
+            "v": "30-day adoption plan"
+          },
+          {
+            "t": "ol",
+            "v": [
+              "Week 1: use Explore \u2192 Plan on real tickets but keep edits small",
+              "Week 2: add CLAUDE.md and two commands to one team repo",
+              "Week 3: introduce AI-assisted review before PRs",
+              "Week 4: evaluate one hook, skill, or MCP server for a repeated workflow"
+            ]
+          },
+          {
+            "t": "h",
+            "v": "Portfolio idea"
+          },
+          {
+            "t": "p",
+            "v": "Publish your GitHub Pages course site and link to the workflow kit in the repository README. This shows both front-end deployment ability and practical AI engineering workflow design."
+          }
+        ]
+      }
+    ]
+  }
+];
+
+function Block({ b, accent }) {
+  const base = { fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif", lineHeight: 1.7 };
+  if (b.t === "p") return <p style={{ ...base, fontSize: 14.5, color: "#b9b9d6", margin: "0 0 16px" }}>{b.v}</p>;
+  if (b.t === "h") return <h3 style={{ ...base, fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: accent, margin: "24px 0 10px" }}>{b.v}</h3>;
+  if (b.t === "ul") return (
+    <ul style={{ margin: "0 0 16px", paddingLeft: 0, listStyle: "none" }}>
+      {b.v.map((item, i) => (
+        <li key={i} style={{ display: "flex", gap: 10, marginBottom: 7, alignItems: "flex-start" }}>
+          <span style={{ color: accent, marginTop: 6, flexShrink: 0, fontSize: 8 }}>◆</span>
+          <span style={{ fontSize: 13.5, color: "#a9a9ca", lineHeight: 1.65 }}>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+  if (b.t === "ol") return (
+    <ol style={{ margin: "0 0 16px", paddingLeft: 0, listStyle: "none" }}>
+      {b.v.map((item, i) => (
+        <li key={i} style={{ display: "flex", gap: 10, marginBottom: 7, alignItems: "flex-start" }}>
+          <span style={{ color: accent, fontWeight: 800, fontSize: 12, minWidth: 24, flexShrink: 0, fontFamily: "JetBrains Mono, ui-monospace, monospace" }}>{i + 1}.</span>
+          <span style={{ fontSize: 13.5, color: "#a9a9ca", lineHeight: 1.65 }}>{item}</span>
+        </li>
+      ))}
+    </ol>
+  );
+  if (b.t === "code") return (
+    <div style={{ margin: "0 0 16px", background: "#090912", border: "1px solid #28283c", borderRadius: 12, overflow: "hidden" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "7px 14px", borderBottom: "1px solid #1c1c2c", background: "#0f0f1a" }}>
+        <span style={{ fontSize: 10, color: "#6f6f91", fontFamily: "JetBrains Mono, ui-monospace, monospace", textTransform: "uppercase", letterSpacing: "0.08em" }}>{b.lang}</span>
+      </div>
+      <pre style={{ margin: 0, padding: "15px 16px", fontSize: 12.5, color: "#d2d2ef", fontFamily: "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, monospace", overflowX: "auto", lineHeight: 1.65, whiteSpace: "pre-wrap", wordBreak: "break-word" }}>{b.v}</pre>
+    </div>
+  );
+  if (b.t === "note") return (
+    <div style={{ margin: "0 0 16px", background: "#141421", borderLeft: `4px solid ${accent}`, borderRadius: "0 12px 12px 0", padding: "13px 16px", fontSize: 13.5, color: "#a7a7c4", lineHeight: 1.65 }}>
+      <span style={{ fontWeight: 800, color: accent }}>Instructor note: </span>{b.v}
+    </div>
+  );
+  if (b.t === "table") return (
+    <div style={{ margin: "0 0 16px", overflowX: "auto", borderRadius: 12, border: "1px solid #242438" }}>
+      <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12.8 }}>
+        <thead>
+          <tr style={{ background: "#11111d" }}>
+            {b.h.map((h, i) => <th key={i} style={{ padding: "10px 14px", textAlign: "left", color: accent, fontWeight: 800, fontSize: 11, letterSpacing: "0.06em", borderBottom: "1px solid #242438", whiteSpace: "nowrap" }}>{h}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {b.r.map((row, ri) => (
+            <tr key={ri} style={{ borderBottom: ri < b.r.length - 1 ? "1px solid #191927" : "none", background: ri % 2 === 0 ? "transparent" : "#0e0e18" }}>
+              {row.map((cell, ci) => <td key={ci} style={{ padding: "10px 14px", color: "#a8a8c6", lineHeight: 1.55, verticalAlign: "top" }}>{cell}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+  return null;
+}
+
+function formatTime(minutes) {
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return h ? `${h}h ${m ? `${m}m` : ""}`.trim() : `${m}m`;
+}
+
+export default function App() {
+  const [done, setDone] = useState(() => {
+    try { return new Set(JSON.parse(localStorage.getItem("cc8_done") || "[]")); }
+    catch { return new Set(); }
+  });
+  const [active, setActive] = useState(M[0].sections[0].id);
+  const [search, setSearch] = useState("");
+  const [open, setOpen] = useState(() => new Set(M.map(m => m.id)));
+
+  const allSections = useMemo(() => M.flatMap(m => m.sections.map(s => ({ ...s, module: m }))), []);
+  const totalMinutes = useMemo(() => M.reduce((sum, m) => sum + m.minutes, 0), []);
+  const totalSections = allSections.length;
+  const activeSection = allSections.find(s => s.id === active) || allSections[0];
+  const activeIndex = allSections.findIndex(s => s.id === activeSection.id);
+  const completedMinutes = allSections.filter(s => done.has(s.id)).reduce((sum, s) => sum + s.minutes, 0);
+  const progress = Math.round((done.size / totalSections) * 100);
+  const timeProgress = Math.round((completedMinutes / totalMinutes) * 100);
+
+  useEffect(() => {
+    try { localStorage.setItem("cc8_done", JSON.stringify([...done])); } catch {}
+  }, [done]);
+
+  const filteredModules = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    if (!q) return M;
+    return M.map(module => ({
+      ...module,
+      sections: module.sections.filter(section =>
+        section.title.toLowerCase().includes(q) ||
+        section.content.some(block => JSON.stringify(block).toLowerCase().includes(q))
+      )
+    })).filter(module => module.sections.length > 0 || module.title.toLowerCase().includes(q));
+  }, [search]);
+
+  const toggleDone = (id) => {
+    setDone(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
+
+  const toggleModule = (id) => {
+    setOpen(prev => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+  };
+
+  const goToSection = (id) => {
+    setActive(id);
+    const el = document.getElementById("top");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  return (
+    <div id="top" style={{ minHeight: "100vh", background: "radial-gradient(circle at top left, #202040 0, #07070d 38%, #050508 100%)", color: "#f4f4ff", fontFamily: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" }}>
+      <style>{`* { box-sizing: border-box; } body { margin: 0; } button, input { font: inherit; } @media (max-width: 900px) { .layout { flex-direction: column; } .sidebar { position: relative !important; width: 100% !important; height: auto !important; } .main { padding: 24px 18px 60px !important; } .heroTitle { font-size: 34px !important; } }`}</style>
+      <div className="layout" style={{ display: "flex", minHeight: "100vh" }}>
+        <aside className="sidebar" style={{ width: 360, flexShrink: 0, borderRight: "1px solid #24243b", background: "rgba(7,7,13,0.92)", backdropFilter: "blur(16px)", position: "sticky", top: 0, height: "100vh", overflowY: "auto", padding: 22 }}>
+          <div style={{ marginBottom: 20 }}>
+            <div style={{ fontSize: 11, letterSpacing: "0.16em", textTransform: "uppercase", color: "#79799b", fontWeight: 800, marginBottom: 8 }}>8-Hour Course</div>
+            <h1 style={{ margin: "0 0 8px", fontSize: 25, letterSpacing: "-0.04em", lineHeight: 1.05 }}>Claude Code Masterclass</h1>
+            <p style={{ margin: 0, color: "#9292b1", fontSize: 13, lineHeight: 1.55 }}>Deep course notes with demos, labs, prompt packs, checklists, MCP, hooks, skills, subagents, and GitHub Pages deployment.</p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 16 }}>
+            <div style={{ padding: 12, borderRadius: 14, background: "#10101a", border: "1px solid #25253a" }}>
+              <div style={{ color: "#77779a", fontSize: 11, marginBottom: 5 }}>Content</div>
+              <strong>{formatTime(totalMinutes)}</strong>
+            </div>
+            <div style={{ padding: 12, borderRadius: 14, background: "#10101a", border: "1px solid #25253a" }}>
+              <div style={{ color: "#77779a", fontSize: 11, marginBottom: 5 }}>Lessons</div>
+              <strong>{totalSections}</strong>
+            </div>
+          </div>
+
+          <div style={{ marginBottom: 16 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 12, color: "#aaaacc", marginBottom: 7 }}>
+              <span>{progress}% complete</span><span>{formatTime(completedMinutes)} / {formatTime(totalMinutes)}</span>
+            </div>
+            <div style={{ height: 9, background: "#151525", borderRadius: 999, overflow: "hidden", border: "1px solid #26263b" }}>
+              <div style={{ width: `${timeProgress}%`, height: "100%", background: "linear-gradient(90deg, #22d3ee, #a3e635)", borderRadius: 999 }} />
+            </div>
+          </div>
+
+          <input
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            placeholder="Search lessons, labs, prompts..."
+            style={{ width: "100%", marginBottom: 16, padding: "12px 13px", borderRadius: 13, border: "1px solid #2b2b42", background: "#0e0e18", color: "#f4f4ff", outline: "none" }}
+          />
+
+          <nav>
+            {filteredModules.map((module, mi) => (
+              <div key={module.id} style={{ marginBottom: 12 }}>
+                <button onClick={() => toggleModule(module.id)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, border: "1px solid #25253a", background: module.bg, color: "#fff", borderRadius: 14, padding: "12px 13px", cursor: "pointer", textAlign: "left" }}>
+                  <span style={{ fontWeight: 800, fontSize: 13 }}>{mi + 1}. {module.title}</span>
+                  <span style={{ fontSize: 12, color: module.color, fontWeight: 900 }}>{formatTime(module.minutes)}</span>
+                </button>
+                {open.has(module.id) && (
+                  <div style={{ padding: "8px 0 0 9px" }}>
+                    {module.sections.map(section => {
+                      const isActive = section.id === activeSection.id;
+                      const isDone = done.has(section.id);
+                      return (
+                        <button key={section.id} onClick={() => goToSection(section.id)} style={{ width: "100%", display: "flex", gap: 9, alignItems: "flex-start", border: "none", borderLeft: `2px solid ${isActive ? module.color : "#25253a"}`, background: isActive ? "#141424" : "transparent", color: isActive ? "#ffffff" : "#aaaac8", padding: "9px 10px", cursor: "pointer", textAlign: "left", borderRadius: "0 10px 10px 0" }}>
+                          <span style={{ width: 17, height: 17, borderRadius: 999, border: `1px solid ${isDone ? module.color : "#3a3a52"}`, color: module.color, display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontSize: 11, marginTop: 1 }}>{isDone ? "✓" : ""}</span>
+                          <span style={{ flex: 1 }}>{section.title} <span style={{ color: "#666685", fontSize: 11 }}>({section.minutes}m)</span></span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
+        </aside>
+
+        <main className="main" style={{ flex: 1, minWidth: 0, padding: "42px clamp(26px, 5vw, 74px) 90px" }}>
+          <div style={{ maxWidth: 980, margin: "0 auto" }}>
+            <div style={{ display: "inline-flex", gap: 8, alignItems: "center", padding: "8px 12px", borderRadius: 999, background: activeSection.module.bg, color: activeSection.module.color, fontSize: 12, fontWeight: 900, marginBottom: 18 }}>
+              <span>Module {M.findIndex(m => m.id === activeSection.module.id) + 1}</span>
+              <span style={{ opacity: 0.6 }}>•</span>
+              <span>Lesson {activeIndex + 1} of {totalSections}</span>
+              <span style={{ opacity: 0.6 }}>•</span>
+              <span>{activeSection.minutes} min</span>
+            </div>
+
+            <header style={{ marginBottom: 24 }}>
+              <h2 className="heroTitle" style={{ fontSize: 46, lineHeight: 1.02, letterSpacing: "-0.06em", margin: "0 0 12px" }}>{activeSection.title}</h2>
+              <p style={{ margin: 0, color: "#9696b4", fontSize: 15.5 }}>{activeSection.module.title} · {formatTime(activeSection.module.minutes)} module</p>
+            </header>
+
+            <div style={{ background: "rgba(12,12,23,0.86)", border: "1px solid #292943", borderRadius: 24, padding: "28px clamp(18px, 4vw, 40px)", boxShadow: "0 24px 80px rgba(0,0,0,0.34)" }}>
+              {activeSection.content.map((block, index) => (
+                <Block key={`${activeSection.id}-${index}`} b={block} accent={activeSection.module.color} />
+              ))}
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "space-between", gap: 14, marginTop: 20, alignItems: "center", flexWrap: "wrap" }}>
+              <button onClick={() => toggleDone(activeSection.id)} style={{ border: "1px solid #30304c", background: done.has(activeSection.id) ? activeSection.module.bg : "#10101a", color: done.has(activeSection.id) ? activeSection.module.color : "#e5e5f7", borderRadius: 14, padding: "12px 16px", fontWeight: 900, cursor: "pointer" }}>
+                {done.has(activeSection.id) ? "Marked complete" : "Mark complete"}
+              </button>
+
+              <div style={{ display: "flex", gap: 10 }}>
+                <button disabled={activeIndex <= 0} onClick={() => goToSection(allSections[Math.max(0, activeIndex - 1)].id)} style={{ border: "1px solid #30304c", background: "#10101a", color: activeIndex <= 0 ? "#55556f" : "#e5e5f7", borderRadius: 14, padding: "12px 16px", fontWeight: 900, cursor: activeIndex <= 0 ? "not-allowed" : "pointer" }}>Previous</button>
+                <button disabled={activeIndex >= allSections.length - 1} onClick={() => goToSection(allSections[Math.min(allSections.length - 1, activeIndex + 1)].id)} style={{ border: "1px solid #30304c", background: activeSection.module.color, color: "#07070d", borderRadius: 14, padding: "12px 18px", fontWeight: 950, cursor: activeIndex >= allSections.length - 1 ? "not-allowed" : "pointer", opacity: activeIndex >= allSections.length - 1 ? 0.45 : 1 }}>Next</button>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}
